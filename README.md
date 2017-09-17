@@ -4,6 +4,8 @@ KarelSim
 KarelSim is an online simulator for "Karel the Robot," a simple "world"
 for learning computer programming.
 
+You can find KarelSim running online at [karelsim.com](http://www.karelsim.com)
+
 ### Brief summary of features
 
 - Allows for both *manual operation* (where a user can manually turn and move Karel
