@@ -3,7 +3,11 @@ body {
   background:#ffc;
   padding:0px;
   margin:0px;
-  background-color:#996;
+  background-color:#AABBCC;
+}
+
+.hidden {
+  display: none;
 }
 
 a {

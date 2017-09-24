@@ -13,7 +13,8 @@
     },
     dir: "../dist",
 	keepBuildDir:false,
-	optimize:"uglify",     /* uglify, closure, closure.keepLines, none */
+	optimize:"none",     /* uglify, closure, closure.keepLines, none */
+	XXXXoptimize:"uglify",     /* uglify, closure, closure.keepLines, none */
     modules: [
 	    {
 		    name: "karel",
