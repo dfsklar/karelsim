@@ -121,6 +121,15 @@ karelsim.prependInfo = function(spanId, msg) {
 	$span.html(msg + "<br />" + $span.html());
 };
 
+// appendInfo -- Append new messages at the front... most recent messages appear "on top"
+karelsim.appendInfo = function(spanId, msg) {
+    "use strict";
+	var $span = $("#" + spanId);
+	$span.html($span.html() + msg + "<br />");
+	var element = $span.get(0);
+    element.scrollTop = element.scrollHeight;
+};
+
 // copyToClipboard -- A simple way to let the user hit Ctrl-C on some text
 karelsim.copyToClipboard = function(text) {
     window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
@@ -477,10 +486,10 @@ karelsim.clearAllIcons = function() {
 // === FUNCTIONS TO DISPLAY MESSAGES AND STATUS INFORMATION ===
 
 karelsim.errorMessage = function(msg) {
-    karelsim.prependInfo('log', '<span class="error_message">ERROR: ' + msg + '</span>');
+    karelsim.appendInfo('log', '<span class="error_message">ERROR: ' + msg + '</span>');
 };
 karelsim.infoMessage = function(msg) {
-    karelsim.prependInfo('log', msg);
+    karelsim.appendInfo('log', msg);
 };
 
 
@@ -1213,7 +1222,7 @@ karelsim.jsimPreStep = function() {
 //                       jsim calls this when done executing pgm
 karelsim.jsimEndOfExecution = function() {
     "use strict";
-    karelsim.infoMessage("End of execution.");
+    karelsim.infoMessage("Karel finished running your program.");
 };
 
 

@@ -85,7 +85,9 @@ li {
 }
 
 #rightcontent {
+  min-width: 4000px;
   background:#366;
+  color: white;
   border-top:0px solid #000;
   border-left:0px solid #000;
   border-bottom:0px solid #000;
@@ -196,7 +198,7 @@ li {
 }
 
 #log {
-  height:200px;
+  height:100px;
   width:100%;
   overflow:scroll;
   background-color:#fff;
