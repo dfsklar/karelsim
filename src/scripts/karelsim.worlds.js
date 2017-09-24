@@ -10,32 +10,64 @@ define(
 ["karelsim"],
 function(karelsim) {
 
-karelsim.world_Sample1 = function() {
+karelsim.world_BackAndForth1 = function() {
+    "use strict";
+	clearWorld(4, 3);
+	
+	wall(1  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(1.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 1.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(3  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+
+	wall(2  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3.5, 2.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(4  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+		
+	beeper(4, 3);
+	karel(1, 1, 'north');
+	return 0;
+};
+
+
+karelsim.world_BackAndForth2 = function() {
     "use strict";
 	clearWorld(5, 4);
-	wall(1.5, 1.5, karelsim.RIGHT);
+	
+	wall(1  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(1.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
 	wall(2  , 1.5, karelsim.RIGHT + karelsim.LEFT);
-	wall(2.5, 1.5, karelsim.TOP + karelsim.RIGHT + karelsim.LEFT); 
+	wall(2.5, 1.5, karelsim.RIGHT + karelsim.LEFT); 
 	wall(3  , 1.5, karelsim.RIGHT + karelsim.LEFT);
-	wall(3.5, 1.5, karelsim.LEFT);
-	wall(1.5, 2.5, karelsim.TOP);
-	wall(1.5, 3  , karelsim.TOP + karelsim.BOTTOM);
-	wall(1.5, 3.5, karelsim.RIGHT + karelsim.BOTTOM);
-	wall(2  , 3.5, karelsim.RIGHT + karelsim.LEFT);
-	wall(2.5, 3.5, karelsim.LEFT);
-	wall(2.5, 2  , karelsim.TOP + karelsim.BOTTOM);
-	wall(2.5, 2.5, karelsim.RIGHT + karelsim.BOTTOM);
+	wall(3.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(4  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+
+	wall(2  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 2.5, karelsim.RIGHT + karelsim.LEFT);
 	wall(3  , 2.5, karelsim.RIGHT + karelsim.LEFT);
-	wall(3.5, 2.5, karelsim.TOP + karelsim.LEFT);
-	wall(3.5, 3  , karelsim.TOP + karelsim.BOTTOM);
-	wall(3.5, 3.5, karelsim.BOTTOM);
-	beeper(4, 2);
-	beeper(3, 3);
-	beeper(1, 3);
+	wall(3.5, 2.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(4  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(4.5, 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(5  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	
+	wall(1  , 3.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(1.5, 3.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2  , 3.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 3.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(3  , 3.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3.5, 3.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(4  , 3.5, karelsim.RIGHT + karelsim.LEFT);
+	
 	beeper(1, 4);
 	karel(1, 1, 'north');
 	return 0;
 };
+
+
+
+
 
 karelsim.world_Sample2 = function() {
     "use strict";
@@ -85,7 +117,7 @@ karelsim.world_Sample3 = function() {
 	wall(4  , 3.5, karelsim.RIGHT + karelsim.LEFT);
 	
 	beeper(1, 4);
-	karel(1, 1, 'east');
+	karel(1, 1, 'north');
 	return 0;
 };
 

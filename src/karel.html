@@ -62,49 +62,16 @@
               </select>
           </form>
 
-          <form id="f_loadworld">
-            <a id="btnLoadWorldUsingForm" href="#">
-              Load world
-            </a>
-			<span id="load_existing_world">
-              World:
-              <select id="worldName">
-  			    <option value="world_EmptySevenBySevenWithKarelInMiddle">7x7 turning practice</option>
-                <option value="world_Sample1">Sample #1</option>
-				<option value="world_Sample2">Sample #2</option>
-				<option value="world_Sample3">Sample #3</option>
-				<option value="">--------------------------------------------</option>
-                <option value="world_EmptyTenByFour">Empty 10x4</option>
-				<option value="world_EmptyEightByEight">Empty 8x8</option>
-				<option value="">--------------------------------------------</option>
-				<option value="world_EightByEightWithBeepers1">8x8 with beepers #1</option>
-				<option value="world_EightByEightWithBeepers2">8x8 with beepers #2</option>
-				<option value="world_EightByEightWithBeepers3">8x8 with beepers #3</option>
-				<option value="world_EightByEightWithRandomBeepers">8x8 with random beepers</option>
-				<option value="">--------------------------------------------</option>
-				<option value="world_TwelveByFourWithHurdles1">12x4 with hurdles #1</option>
-				<option value="world_TwelveByFourWithHurdles2">12x4 with hurdles #2</option>
-				<option value="world_TwelveByFourWithHurdles3">12x4 with hurdles #3</option>
-				<option value="world_TwelveByFourWithRandomHurdles">12x4 with random hurdles</option>
-				<option value="">--------------------------------------------</option>
-				<option value="world_EmptyTwelveByEightWithBeepersInBag">12x8 with beepers in bag</option>
-				<option value="">--------------------------------------------</option>
-				<option value="world_TwelveByTwelveMaze1">12x12 maze #1</option>
-				<option value="">--------------------------------------------</option>
-				<option value="world_Greetings">Greetings!</option>
-              </select>
-			</span>
-          </form>
           
-		  <a id="btnResetKarel" href="#">Put Karel at (1, 1) facing north</a><br />
+		  <a id="btnResetKarel" href="#">Reset Karel to its "home position".</a><br />
 		  <!--
           <a id="btnTurnOn"     href="#">Turn on</a><br />
           <a id="btnTurnOff"    href="#">Turn off</a><br /> -->
-          <a id="btnMove"       href="#">Go forward 1 position</a><br />
+          <a id="btnMove" href="#"><tt>move();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt> Go forward 1 position</a><br />
           <!-- <a id="btnTurnLeft"   href="#">Turn left</a><br /> -->
-          <a id="btnTurnRight"  href="#">Turn right</a><br />
-          <a id="btnPickBeeper" href="#">Pick up a beeper</a><br />
-          <a id="btnPutBeeper"  href="#">Put down a beeper</a><br />
+          <a id="btnTurnRight"  href="#"><tt>turnRight();&nbsp;&nbsp;</tt> Turn right</a><br />
+          <a id="btnPickBeeper" href="#"><tt>pickBeeper();&nbsp;</tt> Pick up a beeper</a><br />
+          <a id="btnPutBeeper"  href="#"><tt>putBeeper();&nbsp;&nbsp;</tt> Put down a beeper</a><br />
           <br />
 		  
           <hr />
@@ -172,6 +139,21 @@ function main() {
 		
 
         <div id="rightcontent">
+
+          <form id="f_loadworld">
+			<span id="load_existing_world">
+              Select a map to load:
+              <select id="worldName">
+					<option value="world_BackAndForth1">Back&amp;Forth #1</option>
+					<option value="world_BackAndForth2">Back&amp;Forth #2</option>
+              </select>
+			</span>
+			&nbsp;&nbsp;
+			<a id="btnLoadWorldUsingForm" href="#">
+					Load
+			</a>	  
+          </form>
+          
 
           <div id="iconbar" class='hidden'>
 		    <span id="design_icons">

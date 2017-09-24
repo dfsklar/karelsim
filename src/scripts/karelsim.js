@@ -141,7 +141,9 @@ karelsim.callFunctionByName = function(sFunctionName) { return window[sFunctionN
 
 // callMethodByName == Given an object and a method name, invoke the method on 
 //                     the object. Returns value returned by method.
-karelsim.callMethodByName = function(obj, sMethodName) { return obj[sMethodName].apply([]); };
+karelsim.callMethodByName = function(obj, sMethodName) { 
+	return obj[sMethodName].apply([]); 
+};
 
 // insertAtCaret -- Insert given piece of text at the cursor/caret position within the
 // textarea with the given id. Copied from:
@@ -943,8 +945,9 @@ karelsim.init = function() {
 	karelsim.loadGrammarList();
 	// Drop down of commands
 	karelsim.loadCommandList(); 
+
 	// Load a sample world
-	karelsim.callMethodByName(karelsim, "world_Sample1"); 
+	karelsim.callMethodByName(karelsim, "world_BackAndForth1"); 
 	
 	// Set default grammar... first/selected grammar in grammars drop down
 	karelsim.grammarChosen();

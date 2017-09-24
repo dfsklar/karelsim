@@ -4,7 +4,7 @@ body {
   padding:0px;
   margin:0px;
   background-color:#AABBCC;
-  padding: 4px;
+  padding: 6px;
 }
 
 .hidden {
@@ -85,7 +85,7 @@ li {
 }
 
 #rightcontent {
-  min-width: 4000px;
+  min-width: 400px;
   background:#366;
   color: white;
   border-top:0px solid #000;
@@ -201,6 +201,7 @@ li {
   height:100px;
   width:100%;
   overflow:scroll;
+  color: black;
   background-color:#fff;
   margin-top:10px;
   margin-bottom:10px;
