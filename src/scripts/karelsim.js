@@ -303,6 +303,7 @@ karelsim.setKarel = function(status, wx, wy, dir) {
 karelsim.errorTurnOff = function() {
     karelsim.setKarelStatus('off');
 	WORLDSIM.worldController.world.karel.turnOff();  // UI
+	jsim.pause();
 };
 
 karelsim.setNumBeepersInKarelsBag = function(numBeepers) {
@@ -826,6 +827,9 @@ nn=(document.layers)?true:false;
 ie=(document.all)?true:false;
 
 karelsim.keyDown = function(e) {
+	// DFSKLAR does not want this on for the kids.
+	return;
+
 	var evt = (e) ? e : (window.event) ? window.event : null;
 	if ( evt ) {
 		var key = (evt.charCode) ? 
@@ -927,7 +931,7 @@ karelsim.init = function() {
 	//*jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN + jsim.LOG_EXEC);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED);
-	jsim.setStepDelay(1000); // Controls playback speed
+	jsim.setStepDelay(800); // Controls playback speed
 	jsim.setPreStepCallback(karelsim.jsimPreStep);
 	jsim.setEndOfExecutionCallback(karelsim.jsimEndOfExecution);
 	
