@@ -149,31 +149,33 @@ function move() {
 	                karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]/2) ) ) {
 	    karelsim.setKarelPosition(karelsim.karelwx+karelsim.XDELTA[karelsim.karelDir], 
 		                          karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]);
-	    karelsim.infoMessage('Karel moved forward');
+	    karelsim.infoMessage('Karel performed: move()');
 	} else {
 	    karelsim.errorMessage('CRASH!');
 	    karelsim.errorTurnOff();
 	}
 }
 
+/*
 // turnLeft -- Turn Karel 90 degrees counterclockwise
 function turnLeft() {
     "use strict";
 	if ( karelsim.karelStatus === 'on' ) {
     	karelsim.setKarelDirection(karelsim.LEFTTURN[karelsim.karelDir]);
-	    karelsim.infoMessage('Karel turned left');
+	    karelsim.infoMessage('Karel performed: turnLeft()');
 	} else {
 	    karelsim.errorMessage('Karel cannot turn left when he is off.');
 		karelsim.errorTurnOff();
 	}
 }
+*/
 
 // turnRight -- Turn Karel 90 degrees clockwise
 function turnRight() {
     "use strict";
 	if ( karelsim.karelStatus === 'on' ) {
     	karelsim.setKarelDirection(karelsim.RIGHTTURN[karelsim.karelDir]);
-	    karelsim.infoMessage('Karel turned right');
+	    karelsim.infoMessage('Karel performed: turnRight()');
 	} else {
 	    karelsim.errorMessage('Karel cannot turn right when he is off.');
 		karelsim.errorTurnOff();
@@ -233,9 +235,13 @@ function turnOn() {
 	}
 }
 
+
+
+
 // turnOff -- Turn Karel off
 //            Error conditions:
 //              1. Karel is already off
+
 function turnOff() {
     "use strict";
 	if ( karelsim.karelStatus !== 'on' ) {
@@ -246,6 +252,9 @@ function turnOff() {
 		WORLDSIM.worldController.world.karel.turnOff();  // UI
 	}
 }
+
+
+
 
 // ----- MISCELLANEOUS -----
 
@@ -303,7 +312,7 @@ window.getNumBeepersInBeeperBag = getNumBeepersInBeeperBag;
 window.getWorldWidth = getWorldWidth;
 window.getWorldHeight = getWorldHeight;
 window.move = move;
-window.turnLeft = turnLeft;
+// window.turnLeft = turnLeft;
 window.turnRight = turnRight;
 window.pickBeeper = pickBeeper;
 window.putBeeper = putBeeper;

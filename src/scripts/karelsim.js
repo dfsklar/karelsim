@@ -251,6 +251,7 @@ karelsim.setMaxwy = function(maxwy) {
 
 // setKarelStatus -- sts must be 'on' or 'off' (not enforced)
 karelsim.setKarelStatus = function(sts) {
+	// ?? sts = 'on';   // DFSKLARD: for very-first-day, simplify: Karel is always ON
 	karelsim.karelStatus = sts;
 	WORLDSIM.worldController.world.karel.setStatus(sts);  // UI
 };

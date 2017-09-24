@@ -32,12 +32,24 @@ karelsim.addEventListeners = function() {
 		{ sel: "#btnPutBeeper"                    , evt: "click"  , fcn: function() { putBeeper();        return false; } },
 		
 		{ sel: "#btnCheckSyntaxOnly"              , evt: "click"  , fcn: function() { karelsim.checkSyntaxOnly(); return false; } },
-		{ sel: "#btnResetProgram"                 , evt: "click"  , fcn: function() { karelsim.resetProgram();    return false; } },
+		{ sel: "#btnResetProgram"                 , evt: "click"  , fcn: function() { 
+			turnOn();		
+			karel(1,1,"north");
+			karelsim.clearLog();	
+			karelsim.resetProgram();    
+			return false; } },
 		{ sel: "#btnStepOver"                     , evt: "click"  , fcn: function() { karelsim.stepOver();        return false; } },
 		{ sel: "#btnSpeedUp"                      , evt: "click"  , fcn: function() { karelsim.speedUp();         return false; } },
 		{ sel: "#btnSlowDown"                     , evt: "click"  , fcn: function() { karelsim.slowDown();        return false; } },
 		{ sel: "#btnPause"                        , evt: "click"  , fcn: function() { karelsim.togglePause();     return false; } },
-		{ sel: "#btnRunProgram"                   , evt: "click"  , fcn: function() { karelsim.runProgram();      return false; } },
+
+		{ sel: "#btnRunProgram"                   , evt: "click"  , fcn: function() { 
+			turnOn();		
+			karel(1,1,"north");
+			karelsim.clearLog();	
+			karelsim.resetProgram();    
+			karelsim.runProgram();      
+			return false; } },
 		
 		{ sel: "#btnRunImmediate"                 , evt: "click"  , fcn: function() { karelsim.runImmediate(); return false; } },
 		{ sel: "#btnClearLog"                     , evt: "click"  , fcn: function() { karelsim.clearLog();     return false; } },
