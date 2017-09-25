@@ -152,7 +152,6 @@ function move() {
 	    karelsim.infoMessage('Karel performed: move()');
 	} else {
 	    karelsim.errorMessage('CRASH!');
-	    karelsim.errorMessage('Karel is turning itself off :-(');
 	    karelsim.errorTurnOff();
 	}
 }

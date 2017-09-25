@@ -301,7 +301,8 @@ karelsim.setKarel = function(status, wx, wy, dir) {
 
 // errorTurnOff -- Turns Karel off in response to an error condition
 karelsim.errorTurnOff = function() {
-    karelsim.setKarelStatus('off');
+	karelsim.setKarelStatus('off');
+	karelsim.errorMessage('Karel is turning itself off :-(');	
 	WORLDSIM.worldController.world.karel.turnOff();  // UI
 	jsim.pause();
 };
@@ -615,7 +616,10 @@ karelsim.runProgram = function() {
     //     tmpFunc();
 	// We don't do this because we want a simulation so we can step, slow, etc.
 
-	jsim.setErrorMessageCallback(karelsim.errorMessage);
+	jsim.setErrorMessageCallback(function(msg) {
+		karelsim.errorMessage(msg);
+		karelsim.errorTurnOff();
+	});
 	
 	try {
     	// Perform post-parse processing (generate steps, primarily)
