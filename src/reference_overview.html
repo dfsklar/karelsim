@@ -22,9 +22,9 @@
 	      <dt>General Comments</dt>
 	        <dd>
 			Karel lives in a flat world with the standard north, south, east, and west compass points.
-			The world is bounded on all four sides<a href="#differences"><super>*</super></a> by boundaries. 
-			Karel cannot bump
-			into these walls; if it tries to move into one, it will crash.
+			The world is bounded on all four sides by walls. 
+			Karel must not walk
+			into these walls.  If Karel hits a wall, that is considered an ERROR and Karel shuts itself off.
 			<br /><br />
 			Crisscrossing the world are horizontal <strong>streets</strong> (running east-west) and vertical
 			<strong>avenues</strong> (running north-south). An <strong>intersection</strong> (or street corner or corner) is located
@@ -43,9 +43,9 @@
 			</dd>
 			
 		  <dt>Walls</dt>
-	        <dd>Within Karel's world may also be one or more <strong>walls</strong>. Just as Karel may not
-			move into the boundaries of his world, it may not move into walls within it either. An attempt
-			to move into a wall will cause Karel to crash, just like an attempt to move into a boundary.
+	        <dd>As we've mentioned before, Karel's city is surrounded by walls.  
+						In addition, walls may exist within the city as well.
+						Karel must never bump into any walls in or around the city.
 			</dd>
 			
 		  <dt>Beepers</dt>
@@ -63,7 +63,8 @@
 	        <dd>
 			As mentioned above, Karel has a <strong>backpack</strong> into which it can put any number of beepers. The bag is
 			made of a material that completely blocks the sound emitted by the beepers. This means that
-			Karel will never "accidentally" "hear" a beeper in his bag.  If Karel hears a beeper while at an
+			Karel will never "accidentally" "hear" a beeper that is in the backpack.  
+			If Karel hears a beeper while at an
 			intersection it is because there is a beeper sitting on the ground at that intersection.
 			</dd>
         </dl> 

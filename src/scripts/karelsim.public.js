@@ -71,10 +71,8 @@ function setNumBeepersInKarelsBag(n) { karelsim.setNumBeepersInKarelsBag(n); }
 function world(worldName) {
     "use strict";
     var sts = karelsim.callMethodByName(karelsim, worldName);
-	if ( sts === 0 ) {
-	    karelsim.infoMessage("World loaded.");
-	} else {
-	    karelsim.errorMessage("World not loaded.");
+	if ( sts !== 0 ) {
+	    karelsim.errorMessage("This lab could not load the city map you chose.");
 	}
 	return sts;
 }
