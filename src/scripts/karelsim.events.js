@@ -19,9 +19,12 @@ karelsim.addEventListeners = function() {
     var arrEventListeners, ii, len, evlis;
 	
 	arrEventListeners = [
-	    { sel: "#btnInitializeEmptyWorldUsingForm", evt: "click"  , fcn: function() { karelsim.initializeEmptyWorldUsingForm(); return false; } },
-		{ sel: "#btnLoadWorldUsingForm"           , evt: "click"  , fcn: function() { karelsim.loadWorldUsingForm();            return false; } },
+		{ sel: "#btnInitializeEmptyWorldUsingForm", evt: "click"  , fcn: function() { karelsim.initializeEmptyWorldUsingForm(); return false; } },
 		
+		{ sel: "#worldName"                       , evt: "change", fcn: function() {
+			karelsim.loadWorldUsingForm();
+			return false; } },
+
 		{ sel: "#btnResetKarel"                   , evt: "click"  , fcn: function() { karel(1,1,"north"); return false; } },
 		{ sel: "#btnTurnOn"                       , evt: "click"  , fcn: function() { turnOn();           return false; } },
 		{ sel: "#btnTurnOff"                      , evt: "click"  , fcn: function() { turnOff();          return false; } },
@@ -42,7 +45,7 @@ karelsim.addEventListeners = function() {
 			karelsim.clearLog();	
 			karelsim.resetProgram();    
 			return false; } },
-			
+
 		{ sel: "#btnStepOver"                     , evt: "click"  , fcn: function() { karelsim.stepOver();        return false; } },
 		{ sel: "#btnSpeedUp"                      , evt: "click"  , fcn: function() { karelsim.speedUp();         return false; } },
 		{ sel: "#btnSlowDown"                     , evt: "click"  , fcn: function() { karelsim.slowDown();        return false; } },

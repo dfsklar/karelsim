@@ -182,20 +182,21 @@ li {
 	    width:69px;
 	}
 
-#commands_area {
-}
-
     #commands_label {
 	    display:inline-block;
 	    width:69px;
 	}
+
+#f_loadworld {
+  padding-bottom: 5px;
+}
 
 #f_pgm {
     margin-top:10px;
 }
 
 
-#immediate_actions a {
+a.button-a {
   margin-top: 2px;
   border: 1px solid grey;
   padding: 1px 6px 1px 6px;
