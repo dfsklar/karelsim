@@ -31,13 +31,18 @@ karelsim.addEventListeners = function() {
 		{ sel: "#btnPickBeeper"                   , evt: "click"  , fcn: function() { pickBeeper();       return false; } },
 		{ sel: "#btnPutBeeper"                    , evt: "click"  , fcn: function() { putBeeper();        return false; } },
 		
-		{ sel: "#btnCheckSyntaxOnly"              , evt: "click"  , fcn: function() { karelsim.checkSyntaxOnly(); return false; } },
+		{ sel: "#btnCheckSyntaxOnly"              , evt: "click"  , fcn: function() { 
+			karelsim.clearLog();
+			karelsim.checkSyntaxOnly(); 
+			return false; } },
+
 		{ sel: "#btnResetProgram"                 , evt: "click"  , fcn: function() { 
 			turnOn();		
 			karel(1,1,"north");
 			karelsim.clearLog();	
 			karelsim.resetProgram();    
 			return false; } },
+			
 		{ sel: "#btnStepOver"                     , evt: "click"  , fcn: function() { karelsim.stepOver();        return false; } },
 		{ sel: "#btnSpeedUp"                      , evt: "click"  , fcn: function() { karelsim.speedUp();         return false; } },
 		{ sel: "#btnSlowDown"                     , evt: "click"  , fcn: function() { karelsim.slowDown();        return false; } },

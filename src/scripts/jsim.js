@@ -632,6 +632,7 @@ jsim.performStep = function() {
 			}
 		}
 	} catch ( ex ) {
+		this.fcnErrorMessage(ex.message);
 	    jsim.logInternal(jsim.LOG_INTERNAL_ERROR,
 		                 "step: Exception: " + ex.message);
 		throw ( ex );
@@ -716,6 +717,11 @@ jsim.setEndOfExecutionCallback = function(fcn) {
 jsim.setLogMessageCallback = function(fcn) {
     "use strict";
 	this.fcnLogMessage = fcn;
+};
+
+jsim.setErrorMessageCallback = function(fcn) {
+    "use strict";
+	this.fcnErrorMessage = fcn;
 };
 
 

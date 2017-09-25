@@ -151,7 +151,7 @@ function move() {
 		                          karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]);
 	    karelsim.infoMessage('Karel performed: move()');
 	} else {
-	    karelsim.errorMessage('CRASH!  ERROR!');
+	    karelsim.errorMessage('CRASH!');
 	    karelsim.errorMessage('Karel is turning itself off :-(');
 	    karelsim.errorTurnOff();
 	}

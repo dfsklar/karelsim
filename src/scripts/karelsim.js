@@ -614,6 +614,8 @@ karelsim.runProgram = function() {
 	//     tmpFunc = new Function(programSource);
     //     tmpFunc();
 	// We don't do this because we want a simulation so we can step, slow, etc.
+
+	jsim.setErrorMessageCallback(karelsim.errorMessage);
 	
 	try {
     	// Perform post-parse processing (generate steps, primarily)
