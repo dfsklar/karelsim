@@ -192,12 +192,12 @@ function pickBeeper() {
 	    karelsim.errorMessage('Karel cannot pick up a beeper when he is off.');
 		karelsim.errorTurnOff();
 	} else if ( isNotNextToABeeper() ) {
-	    karelsim.errorMessage('No beeper to pick up.');
+	    karelsim.errorMessage('This intersection has NO beeper..');
 	    karelsim.errorTurnOff();
 	} else {
 	    karelsim.removeBeeper(karelsim.karelwx, karelsim.karelwy);
 		karelsim.increaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('A beeper has been picked up');
+	    karelsim.infoMessage('Karel performed: pickBeeper()');
 	}
 }
 
@@ -212,12 +212,12 @@ function putBeeper() {
 	    karelsim.errorMessage('Karel cannot put down a beeper when he is off.');
 		karelsim.errorTurnOff();
 	} else if ( isNoBeepersInBeeperBag() ) {
-	    karelsim.errorMessage('No beeper to put down.');
+	    karelsim.errorMessage('Karel\'s backpack is empty - it has no beeper to put down.');
 	    karelsim.errorTurnOff();
 	} else {
 	    karelsim.addBeeper(karelsim.karelwx, karelsim.karelwy);
 	    karelsim.decreaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('A beeper has been put down.');
+	    karelsim.infoMessage('Karel performed: putBeeper()');
 	}
 }
 

@@ -8,14 +8,12 @@
   <body>
     <div id="reference">
       <div id="reference_heading">Reference Guide: Overview</div>
-	  <div id="reference_mininav"><a href="karel.html">return to main page</a></div>
 	  <div id="reference_content">
         <p>
-	    This page provides an <strong>overview of Karel's world and what he can do</strong>.
+	    This page provides an <strong>overview of Karel's world and what the robot can do</strong>.
 		<br /><br />
 		You may also want to read a reference guide that describes the 
-		<a href="reference_commands_and_functions.html">details of the commands and functions Karel understands</a> and/or a 
-		reference guide for the <a href="reference_language.html">JavaScript programming language</a>.
+		<a href="reference_commands_and_functions.html">details of the vocabulary Karel understands</a>.
 	    </p>
 	
 	    <div class="reference_subheading">Karel's World:</div>
@@ -24,8 +22,9 @@
 	      <dt>General Comments</dt>
 	        <dd>
 			Karel lives in a flat world with the standard north, south, east, and west compass points.
-			The world is bounded on all four sides<a href="#differences"><super>*</super></a> by boundaries. Karel cannot bump
-			into these walls; if he tries to move into one, he will crash.
+			The world is bounded on all four sides<a href="#differences"><super>*</super></a> by boundaries. 
+			Karel cannot bump
+			into these walls; if it tries to move into one, it will crash.
 			<br /><br />
 			Crisscrossing the world are horizontal <strong>streets</strong> (running east-west) and vertical
 			<strong>avenues</strong> (running north-south). An <strong>intersection</strong> (or street corner or corner) is located
@@ -45,7 +44,7 @@
 			
 		  <dt>Walls</dt>
 	        <dd>Within Karel's world may also be one or more <strong>walls</strong>. Just as Karel may not
-			move into the boundaries of his world, he may not move into walls within it either. An attempt
+			move into the boundaries of his world, it may not move into walls within it either. An attempt
 			to move into a wall will cause Karel to crash, just like an attempt to move into a boundary.
 			</dd>
 			
@@ -53,31 +52,24 @@
 	        <dd>
 			Within Karel's world may be zero or more <strong>beepers</strong>. Beepers are small objects that
 			emit a quiet beeping noise that Karel can "hear". When present, they are located at intersections
-			(like Karel), which means when Karel is at a particular intersection, he might be "next to" a
-			beeper, if there is one located where he is located. Karel can pick beepers up and put them
-			into his "beeper bag" (see below) or take them out of his beeper bag and put them down at the
-			intersection at which he is located. More than one beeper may be located at any given 
+			(like Karel), which means when Karel is at a particular intersection, it might be "next to" a
+			beeper, if there is one located where Karel is located. Karel can pick beepers up and put them
+			into its backpack, or take them out of its backpack and put them down at the current
+			intersection. More than one beeper may be located at any given 
 			intersection.
 		    </dd>
 			
-		  <dt>Karel's Beeper Bag</dt>
+		  <dt>Karel's Backpack</dt>
 	        <dd>
-			As mentioned above, Karel has a <strong>beeper bag</strong> into which he can put any number of beepers. The bag is
+			As mentioned above, Karel has a <strong>backpack</strong> into which it can put any number of beepers. The bag is
 			made of a material that completely blocks the sound emitted by the beepers. This means that
-			Karel will never "accidentally" "hear" a beeper in his bag. If he hears a beeper while at an
-			intersection it is because there is a beeper at that intersection that is not in his bag.
+			Karel will never "accidentally" "hear" a beeper in his bag.  If Karel hears a beeper while at an
+			intersection it is because there is a beeper sitting on the ground at that intersection.
 			</dd>
         </dl> 
 	    </p>
 	
 		<br /><br />
-		
-		<a name="differences"></a>
-		<div class="reference_subheading"><super>*</super>Differences From Karel the Robot's Original Specifications:</div>
-		<p>
-		As noted in the text above, this Karel simulator is different in a few minor ways than the original
-		specifications in "Karel the Robot" by Richard E. Pattis and revised by Jim Roberts and Mark Stehlik.
-	    </p>
 		
 	  </div> <!-- reference_content -->
 	</div> <!-- reference -->

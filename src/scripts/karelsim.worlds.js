@@ -13,6 +13,7 @@ function(karelsim) {
 karelsim.world_BackAndForth1 = function() {
     "use strict";
 	clearWorld(4, 3);
+	setNumBeepersInKarelsBag(10);	
 	
 	wall(1  , 1.5, karelsim.RIGHT + karelsim.LEFT);
 	wall(1.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
@@ -35,6 +36,7 @@ karelsim.world_BackAndForth1 = function() {
 karelsim.world_BackAndForth2 = function() {
     "use strict";
 	clearWorld(5, 4);
+	setNumBeepersInKarelsBag(10);	
 	
 	wall(1  , 1.5, karelsim.RIGHT + karelsim.LEFT);
 	wall(1.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
