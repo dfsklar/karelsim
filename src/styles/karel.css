@@ -38,7 +38,6 @@ li {
 }
 
 #topcontent {
-  background:#996;
   margin:0px;
   border:0px;
   padding:0px;
@@ -65,7 +64,6 @@ li {
 
 #middlecontent {
   overflow:hidden;
-  background-color:#996;
 }
 
 #leftcontent {
@@ -197,6 +195,12 @@ li {
     margin-top:10px;
 }
 
+
+#immediate_actions a {
+  border: 1px solid black;
+  padding: 2px;
+}
+
 #log {
   height:100px;
   width:100%;
@@ -209,7 +213,6 @@ li {
 
 #bottomcontent {
   border-top:4px solid #000;
-  background-color:#996;
   height:50px;
 }
 

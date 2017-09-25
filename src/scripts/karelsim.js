@@ -1199,13 +1199,19 @@ karelsim.checkSyntax = function(bQuietOnSuccess) {
 		return 0;
 	} catch ( ex ) {
 	    msg = ex.message;
-	    karelsim.errorMessage("Could not parse: " + msg);
+	    karelsim.errorMessage("Karel says your program is 'not readable'.");
 		lineNumber = ex.parameterValues[1];
+
 		// NOTE: Wish I knew how to set the selectedLine of the textarea
-	    // Show exclamation point at line of error
-		$pgm = $("#pgm");
-		pixelsPerLine = 16;  // NOTE: FRAGILE: Depends on CSS of #pgm
-	    karelsim.positionPointerImage($pgm, pixelsPerLine, $("#syntaxerror"), lineNumber);
+
+		// Show exclamation point at line of error
+		// DFSKLAR has noticed the position is often very far from the actual error position.
+		// DFSKLAR is turning off this feature because it's only confusing.
+		if (false) {
+			$pgm = $("#pgm");
+			pixelsPerLine = 16;  // NOTE: FRAGILE: Depends on CSS of #pgm
+			karelsim.positionPointerImage($pgm, pixelsPerLine, $("#syntaxerror"), lineNumber);
+		}
 		return -1;
 	}
 };

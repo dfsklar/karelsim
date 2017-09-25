@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <title>Karel the Robot Simulator</title>
+    <title>Karel the Robot</title>
     
 	<link href="jquery-linedtextarea/jquery-linedtextarea.css" rel="stylesheet" type="text/css" />
 	<link href="styles/karel.css" rel="stylesheet" type="text/css" />
@@ -35,8 +35,9 @@
     <div id="middlecontent">
     
         <div id="leftcontent">
+		 <div id="immediate_actions">
 		
-          <div id="manual_actions_heading">Manual Actions:</div>
+          <div class='heading' id="manual_actions_heading">Immediate Action Buttons:</div>
           
           <form class='hidden' id="f_clearworld">
             <a id="btnInitializeEmptyWorldUsingForm" href="#">
@@ -72,7 +73,7 @@
           <a id="btnTurnRight"  href="#"><tt>turnRight();&nbsp;&nbsp;</tt> Turn right</a><br />
           <a id="btnPickBeeper" href="#"><tt>pickBeeper();&nbsp;</tt> Pick up a beeper</a><br />
           <a id="btnPutBeeper"  href="#"><tt>putBeeper();&nbsp;&nbsp;</tt> Put down a beeper</a><br />
-          <br />
+          <br /></div>
 		  
           <hr />
 		  
@@ -254,7 +255,7 @@ function main() {
     
     <div id="bottomcontent">
          <p>
-		 &copy; Copyright Mike Fine, 2012.  Simplified for youngsters by DFSklar in 2017.
+		 &copy; Copyright Mike Fine, 2012.<br/>Youth-friendly version by DFSklar.
 		 </p>
     </div>
 
