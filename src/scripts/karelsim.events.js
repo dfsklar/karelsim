@@ -39,7 +39,7 @@ karelsim.addEventListeners = function() {
 			karelsim.checkSyntaxOnly(); 
 			return false; } },
 
-		{ sel: "#btnResetProgram"                 , evt: "click"  , fcn: function() { 
+		{ sel: ".btnResetProgram"                 , evt: "click"  , fcn: function() { 
 			turnOn();		
 			karel(1,1,"north");
 			karelsim.clearLog();	

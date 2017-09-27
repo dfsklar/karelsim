@@ -4,7 +4,7 @@
     <title>Karel the Robot</title>
     
 	<link href="jquery-linedtextarea/jquery-linedtextarea.css" rel="stylesheet" type="text/css" />
-	<link href="styles/karel.css" rel="stylesheet" type="text/css" />
+    <link href="styles/karel.css" rel="stylesheet" type="text/css" />
 	
 	<script type="text/javascript" data-main="scripts/karel.js" 
 	        src="scripts/libs/requirejs/require-jquery.js"></script>
@@ -64,7 +64,7 @@
           </form>
 
           
-		  <a class='button-a' id="btnResetProgram" href="#">Reset Karel to its "home position".</a><br />
+		  <a class='button-a btnResetProgram' id="btnResetProgram" href="#">Reset Karel to its "home position".</a><br />
 		  <!--
           <a id="btnTurnOn"     href="#">Turn on</a><br />
           <a id="btnTurnOff"    href="#">Turn off</a><br /> -->
@@ -113,8 +113,7 @@
           <form id="f_pgm">
 		    <img id="syntaxerror" src="images/exclamationpoint.gif" style="display:none;" />
 		    <img id="currentline" src="images/bluearrow.gif" style="display:none;" />
-            <textarea id="pgm" class="lined" cols=46 rows=25 wrap="soft"
-			>
+            <textarea id="pgm" class="lined" cols=46 rows=25 wrap="soft"	>
 function main() {
   move();
 }</textarea>
@@ -128,6 +127,12 @@ function main() {
 	  	          <a id="btnLengthen" href="#"><img src="images/pgm-lengthen.gif" alt="Lengthen" title="Lengthen"></a>
 		      </div>
 	      </div>
+
+		<div class='advanced-teaching'>
+				<a class='button-a btnResetProgram' id="btnResetProgram" href="#">Reset</a>
+				<a class='button-a' id="btnStepOver" href="#">Step</a>
+			</div>
+				
 
 		  <!--
 	      <hr />
@@ -413,7 +418,20 @@ function main() {
 				</span>
 			{{/each}}
 		</div>
-    </script>
+     </script>
+
+        
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105369895-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 	
   </body>
 </html>
