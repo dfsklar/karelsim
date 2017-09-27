@@ -32,7 +32,7 @@
 			</dd>
 		  <dt>pickBeeper()</dt>
 	        <dd>
-				Karel will pick up a beeper at his current intersection and place it in its backpack. 
+				Karel will pick up a beeper at the current intersection and place it in its backpack. 
 				If there is no beeper on the ground at that intersection
 				to pick up, that is considered a program error!
 			</dd>
@@ -72,14 +72,16 @@
 			</dd>
 		  <dt>isNextToABeeper(), isNotNextToABeeper()</dt>
 	        <dd>
-			    Each returns true if a wall or boundary is NOT in front of, to the left of, or to the right of
-				Karel, respectively, or returns false otherwise. These are the opposites of the isXXXBlocked()
-				functions.
+			    These sensor functions lets your program check to see 
+	    if there is at least one beeper on the ground at the
+	    intersection where Karel currently stands.
 			</dd>
-		  <dt>isAnyBeepersInBeeperBag(), isNoBeepersInBeeperBag()</dt>
+		  <dt>isAnyBeepersInBackpack(), isNoBeepersInBackpack()</dt>
 	        <dd>
-			    Returns true or false based on whether there are any beepers in Karel's beeper bag.
+			    These sensor functions lets your program check to see
+	    if Karel has any beepers in its backpack.
 			</dd>
+			<!--
 		  <dt>print(msg), assert(condition, msg)</dt>
 	        <dd>
 			    The print() function doesn't move or otherwise change Karel's state. Instead, it "prints" whatever
@@ -88,7 +90,7 @@
 				The assert() function tests whether the condition given is true or not. If it is not, the function
 				prints the message given. Thus, the message is only shown if some <i>assertion</i> or expectation
 				is not being met. This is very handy for debugging.
-			</dd>
+			</dd>-->
 			<!--
 		  <dt>clearWorld(maxX,maxY), wall(x,y,direction), karel(x,y,direction), beeper(x,y)</dt>
 	        <dd>
@@ -103,13 +105,7 @@
 		</dl>
 		</p>
 		
-		<div class="reference_subheading">Error Conditions:</div>
-		<p>Karel will obey your commands, but only if by doing so it can remain safe and not malfunction.
-		   The descriptions of the various commands Karel can perform describe the situations under which Karel
-		   will perform an <strong>error shutdown</strong> and turn off. 
-		
-	    </p>
-		
+	
 		<br /><br />
 		
 	  </div> <!-- reference_content -->

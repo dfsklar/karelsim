@@ -30,10 +30,10 @@
 //     isFrontBlocked, isLeftBlocked, isRightBlocked
 //     isFrontClear, isLeftClear, isRightClear
 //     isNextToABeeper, isNotNextToABeeper
-//     isAnyBeepersInBeeperBag
-//     isNoBeepersInBeeperBag
+//     isAnyBeepersInBackpack
+//     isNoBeepersInBackpack
 //     getXPosition, getYPosition, getPositionAsString, getDirection 
-//     getNumBeepersNextTo, getNumBeepersInWorld, getNumBeepersInBeeperBag
+//     getNumBeepersNextTo, getNumBeepersInWorld, getNumBeepersInBackpack
 //     getWorldWidth, getWorldHeight
 //
 //     Actions
@@ -118,8 +118,8 @@ function isRightClear() { return ( ! isRightBlocked() ); }
 function isNextToABeeper()    { return ( karelsim.isBeeperAt(karelsim.karelwx, karelsim.karelwy) ); }
 function isNotNextToABeeper() { return ( ! isNextToABeeper() ); }
 
-function isAnyBeepersInBeeperBag()    { return ( karelsim.numBeepersInKarelsBag > 0  ); }
-function isNoBeepersInBeeperBag()     { return ( karelsim.numBeepersInKarelsBag <= 0 ); }
+function isAnyBeepersInBackpack()    { return ( karelsim.numBeepersInKarelsBag > 0  ); }
+function isNoBeepersInBackpack()     { return ( karelsim.numBeepersInKarelsBag <= 0 ); }
 
 function getXPosition() { return karelsim.karelwx; }
 function getYPosition() { return karelsim.karelwy; }
@@ -127,7 +127,7 @@ function getPositionAsString() { return "(" + karelsim.karelwx + "," + karelsim.
 function getDirection() { return karelsim.karelDir; }
 function getNumBeepersNextTo() { return karelsim.numBeepersAt(karelsim.karelwx, karelsim.karelwy); }
 function getNumBeepersInWorld() { return ( karelsim.numBeepersInWorld ); }
-function getNumBeepersInBeeperBag() { return ( karelsim.numBeepersInKarelsBag ); }
+function getNumBeepersInBackpack() { return ( karelsim.numBeepersInKarelsBag ); }
 
 function getWorldWidth()  { return karelsim.maxwx_; }
 function getWorldHeight() { return karelsim.maxwy_; }
@@ -147,7 +147,7 @@ function move() {
 	                karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]/2) ) ) {
 	    karelsim.setKarelPosition(karelsim.karelwx+karelsim.XDELTA[karelsim.karelDir], 
 		                          karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]);
-	    karelsim.infoMessage('Karel performed: move()');
+	    karelsim.infoMessage('&nbsp;&nbsp;move();');
 	} else {
 	    karelsim.errorMessage('CRASH!');
 	    karelsim.errorTurnOff();
@@ -173,7 +173,7 @@ function turnRight() {
     "use strict";
 	if ( karelsim.karelStatus === 'on' ) {
     	karelsim.setKarelDirection(karelsim.RIGHTTURN[karelsim.karelDir]);
-	    karelsim.infoMessage('Karel performed: turnRight()');
+	    karelsim.infoMessage('&nbsp;&nbsp;turnRight();');
 	} else {
 	    karelsim.errorMessage('Karel cannot turn right when he is off.');
 		karelsim.errorTurnOff();
@@ -209,13 +209,13 @@ function putBeeper() {
 	if ( karelsim.karelStatus !== 'on' ) {
 	    karelsim.errorMessage('Karel cannot put down a beeper when he is off.');
 		karelsim.errorTurnOff();
-	} else if ( isNoBeepersInBeeperBag() ) {
+	} else if ( isNoBeepersInBackpack() ) {
 	    karelsim.errorMessage('Karel\'s backpack is empty - it has no beeper to put down.');
 	    karelsim.errorTurnOff();
 	} else {
 	    karelsim.addBeeper(karelsim.karelwx, karelsim.karelwy);
 	    karelsim.decreaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('Karel performed: putBeeper()');
+	    karelsim.infoMessage('&nbsp;&nbsp;putBeeper()');
 	}
 }
 
@@ -298,15 +298,15 @@ window.isLeftClear = isLeftClear;
 window.isRightClear = isRightClear;
 window.isNextToABeeper = isNextToABeeper;
 window.isNotNextToABeeper = isNotNextToABeeper;
-window.isAnyBeepersInBeeperBag = isAnyBeepersInBeeperBag;
-window.isNoBeepersInBeeperBag = isNoBeepersInBeeperBag;
+window.isAnyBeepersInBackpack = isAnyBeepersInBackpack;
+window.isNoBeepersInBackpack = isNoBeepersInBackpack;
 window.getXPosition = getXPosition;
 window.getYPosition = getYPosition;
 window.getPositionAsString = getPositionAsString;
 window.getDirection = getDirection;
 window.getNumBeepersNextTo = getNumBeepersNextTo;
 window.getNumBeepersInWorld = getNumBeepersInWorld;
-window.getNumBeepersInBeeperBag = getNumBeepersInBeeperBag;
+window.getNumBeepersInBackpack = getNumBeepersInBackpack;
 window.getWorldWidth = getWorldWidth;
 window.getWorldHeight = getWorldHeight;
 window.move = move;
