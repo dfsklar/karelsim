@@ -195,7 +195,7 @@ function pickBeeper() {
 	} else {
 	    karelsim.removeBeeper(karelsim.karelwx, karelsim.karelwy);
 		karelsim.increaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('Karel performed: pickBeeper()');
+	    karelsim.infoMessage('&nbsp;&nbsp;pickBeeper();');
 	}
 }
 
@@ -215,7 +215,7 @@ function putBeeper() {
 	} else {
 	    karelsim.addBeeper(karelsim.karelwx, karelsim.karelwy);
 	    karelsim.decreaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('&nbsp;&nbsp;putBeeper()');
+	    karelsim.infoMessage('&nbsp;&nbsp;putBeeper();');
 	}
 }
 
