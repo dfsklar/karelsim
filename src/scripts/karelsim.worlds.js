@@ -33,6 +33,33 @@ karelsim.world_BackAndForth1 = function() {
 };
 
 
+karelsim.world_BackAndForth1a = function() {
+    "use strict";
+	clearWorld(5, 3);
+	setNumBeepersInKarelsBag(10);	
+	
+	wall(1  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(1.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 1.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(3  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(4, 1.5, karelsim.RIGHT + karelsim.LEFT);
+	
+	wall(2  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3.5, 2.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(4  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(4.5, 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(5  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	
+	beeper(5, 3);
+	karel(1, 1, 'north');
+	return 0;
+};
+
+
 karelsim.world_BackAndForth2 = function() {
     "use strict";
 	clearWorld(5, 4);

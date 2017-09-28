@@ -15,7 +15,8 @@
   
     <div id="topcontent">
       <img id="logo" src="images/robot.gif" width="20" height="39" alt="Karel the Robot" />
-      <b><span class="title">Welcome to the Karel the Robot Coding Lab!</span></b>
+			<b><span class="title">Welcome to the Karel the Robot Coding Lab!</span></b>
+			<tt class='bitly'>bit.ly/runkarel</tt>
 	  <div id="navbar">
 		  <!--
 		<a href="about.html">About/Contact</a> |   -->
@@ -90,18 +91,13 @@
 					  <a id="btnSlowDown" href="#"><img src="images/icon-slowdown.gif" alt="Slow Down" title="Slow Down"></a>
 					  <a id="btnPause" href="#"><img src="images/icon-pause.gif" alt="Pause/Unpause" title="Pause/Unpause"></a>
 					  -->
-					  <a class='button-a' id="btnRunProgram" href="#">Run program</a>
+						<a class='button-a' id="btnRunProgram" href="#">Reset and Run "main"</a>
+						<br/>
+						<a class='button-a btnResetProgram' id="btnResetProgram" href="#">Reset</a>
+						<a class='button-a'                 id="btnStepOver" href="#">Do 1 Step</a>
 				  </span>
-			  </div>
-
-			  <div>
-					When you "run" the program, 
-					Karel:
-					<br/>1. goes back to "home position",
-					<br/>2. performs the commands
-					that you have placed in the "main" function.
-			  </div>
-
+				</div>
+				
 			  <div class='hidden' id="program_heading_2">
 			      <span id="grammars_area"><span id="grammars_label">Language:</span><span id="grammars"></span></span>
 			  </div>
@@ -154,14 +150,15 @@ function main() {
 		
 
         <div id="rightcontent">
-          <p class='lesson-intro'>LESSON #1 includes 2 city maps!</p>
+          <p class='lesson-intro'>LESSON #1 includes 3 city maps!</p>
 
           <form id="f_loadworld">
 			<span id="load_existing_world">
               Select the city you'd like Karel to live in:
               <select id="worldName">
-					<option value="world_BackAndForth1">Back&amp;Forth #1</option>
-					<option value="world_BackAndForth2">Back&amp;Forth #2</option>
+								<option value="world_BackAndForth1">Back&amp;Forth (3 short rows)</option>
+								<option value="world_BackAndForth1a">Back&amp;Forth (3 long rows)</option>
+								<option value="world_BackAndForth2">Back&amp;Forth (4 rows)</option>
               </select>
 			</span>
           </form>
@@ -260,7 +257,14 @@ function main() {
     		<div id="log"></div>
 		  </div> <!-- log_block -->
 		  
-        </div> <!-- rightcontent -->
+				</div> <!-- rightcontent -->
+				
+				<div class='lesson-notes'>
+					<b>Lesson Notes!</b>  
+					<br/>You can review this lesson, including the "exercises"<br/>and their solutions, anytime!
+					<br/>  
+					<a target='_karel_lesson_notes' href='https://docs.google.com/document/d/1r8LdRr0sxXIejX3bpRW6oPpRNwuknQNo5whle_I6GLU/edit?usp=sharing'>Just click here!</a>
+        </div>
 		
     </div> <!-- middlecontent -->
     
