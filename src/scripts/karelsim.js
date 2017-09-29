@@ -490,10 +490,10 @@ karelsim.clearAllIcons = function() {
 // === FUNCTIONS TO DISPLAY MESSAGES AND STATUS INFORMATION ===
 
 karelsim.errorMessage = function(msg) {
-    karelsim.appendInfo('log', '<span class="error_message">ERROR: ' + msg + '</span>');
+    karelsim.appendInfo('log', '<span class="error_message">&nbsp;&nbsp;ERROR: ' + msg + '</span>');
 };
 karelsim.infoMessage = function(msg) {
-    karelsim.appendInfo('log', msg);
+    karelsim.appendInfo('log', "&nbsp;&nbsp;" + msg);
 };
 
 

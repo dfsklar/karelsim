@@ -147,7 +147,7 @@ function move() {
 	                karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]/2) ) ) {
 	    karelsim.setKarelPosition(karelsim.karelwx+karelsim.XDELTA[karelsim.karelDir], 
 		                          karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]);
-	    karelsim.infoMessage('&nbsp;&nbsp;move();');
+	    karelsim.infoMessage('move();');
 	} else {
 	    karelsim.errorMessage('CRASH!');
 	    karelsim.errorTurnOff();
@@ -173,7 +173,7 @@ function turnRight() {
     "use strict";
 	if ( karelsim.karelStatus === 'on' ) {
     	karelsim.setKarelDirection(karelsim.RIGHTTURN[karelsim.karelDir]);
-	    karelsim.infoMessage('&nbsp;&nbsp;turnRight();');
+	    karelsim.infoMessage('turnRight();');
 	} else {
 	    karelsim.errorMessage('Karel cannot turn right when he is off.');
 		karelsim.errorTurnOff();
@@ -195,7 +195,7 @@ function pickBeeper() {
 	} else {
 	    karelsim.removeBeeper(karelsim.karelwx, karelsim.karelwy);
 		karelsim.increaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('&nbsp;&nbsp;pickBeeper();');
+	    karelsim.infoMessage('pickBeeper();');
 	}
 }
 
@@ -215,7 +215,7 @@ function putBeeper() {
 	} else {
 	    karelsim.addBeeper(karelsim.karelwx, karelsim.karelwy);
 	    karelsim.decreaseNumBeepersInKarelsBag();
-	    karelsim.infoMessage('&nbsp;&nbsp;putBeeper();');
+	    karelsim.infoMessage('putBeeper();');
 	}
 }
 
