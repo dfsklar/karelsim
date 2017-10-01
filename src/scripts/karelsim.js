@@ -568,6 +568,10 @@ karelsim.slowDown = function() {
 	jsim.slowDown(1.1);
 };
 
+karelsim.pause = function() {
+	jsim.pause();
+};
+
 karelsim.togglePause = function() {
     "use strict";
 	var isPaused;

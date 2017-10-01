@@ -39,7 +39,8 @@ karelsim.addEventListeners = function() {
 			karelsim.checkSyntaxOnly(); 
 			return false; } },
 
-		{ sel: ".btnResetProgram"                 , evt: "click"  , fcn: function() { 
+		{ sel: ".btnResetProgram"                 , evt: "click"  , fcn: function() {
+			karelsim.pause();
 			turnOn();		
 			karel(1,1,"north");
 			karelsim.clearLog();	
@@ -49,15 +50,20 @@ karelsim.addEventListeners = function() {
 		{ sel: "#btnStepOver"                     , evt: "click"  , fcn: function() { karelsim.stepOver();        return false; } },
 		{ sel: "#btnSpeedUp"                      , evt: "click"  , fcn: function() { karelsim.speedUp();         return false; } },
 		{ sel: "#btnSlowDown"                     , evt: "click"  , fcn: function() { karelsim.slowDown();        return false; } },
-		{ sel: "#btnPause"                        , evt: "click"  , fcn: function() { karelsim.togglePause();     return false; } },
 
-		{ sel: "#btnRunProgram"                   , evt: "click"  , fcn: function() { 
+		{ sel: "#btnPause"                        , evt: "click"  , fcn: function() {
+			karelsim.togglePause();
+			return false; } },
+
+		{ sel: "#btnRunProgram"                   , evt: "click"  , fcn: function() {
+			karelsim.pause();
 			turnOn();		
 			karel(1,1,"north");
 			karelsim.clearLog();	
 			karelsim.resetProgram();    
 			karelsim.runProgram();      
-			return false; } },
+			return false; } 
+		},
 		
 		{ sel: "#btnRunImmediate"                 , evt: "click"  , fcn: function() { karelsim.runImmediate(); return false; } },
 		{ sel: "#btnClearLog"                     , evt: "click"  , fcn: function() { karelsim.clearLog();     return false; } },
