@@ -9,6 +9,7 @@
 }
 
 
+
 .lineno {
     font-family: "Courier New";
     font-size: 11pt !important;
@@ -398,6 +399,7 @@ dl {
   position:relative;
   top:-25px;
   left:10px;
-  text-weight:bold;
+  color: blue;
+  font-weight: bold;
 }
 

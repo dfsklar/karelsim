@@ -1,4 +1,2 @@
-cd build
-bash build.sh
-cd ../dist
+cd serve_from_here
 python -m SimpleHTTPServer

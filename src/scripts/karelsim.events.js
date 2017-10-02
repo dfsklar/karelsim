@@ -39,14 +39,6 @@ karelsim.addEventListeners = function() {
 			karelsim.checkSyntaxOnly(); 
 			return false; } },
 
-		{ sel: ".btnResetProgram"                 , evt: "click"  , fcn: function() {
-			karelsim.pause();
-			turnOn();		
-			karel(1,1,"north");
-			karelsim.clearLog();	
-			karelsim.resetProgram();    
-			return false; } },
-
 		{ sel: "#btnStepOver"                     , evt: "click"  , fcn: function() { karelsim.stepOver();        return false; } },
 		{ sel: "#btnSpeedUp"                      , evt: "click"  , fcn: function() { karelsim.speedUp();         return false; } },
 		{ sel: "#btnSlowDown"                     , evt: "click"  , fcn: function() { karelsim.slowDown();        return false; } },
@@ -55,10 +47,18 @@ karelsim.addEventListeners = function() {
 			karelsim.togglePause();
 			return false; } },
 
+		// These next two are identical except for runProgram() at end
+		{ sel: ".btnResetProgram"                 , evt: "click"  , fcn: function() {
+			karelsim.pause();
+			turnOn();
+			karelsim.loadWorldUsingForm();
+			karelsim.clearLog();	
+			karelsim.resetProgram();    
+			return false; } },	
 		{ sel: "#btnRunProgram"                   , evt: "click"  , fcn: function() {
 			karelsim.pause();
-			turnOn();		
-			karel(1,1,"north");
+			turnOn();
+			karelsim.loadWorldUsingForm();
 			karelsim.clearLog();	
 			karelsim.resetProgram();    
 			karelsim.runProgram();      

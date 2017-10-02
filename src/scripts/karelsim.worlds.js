@@ -10,6 +10,43 @@ define(
 ["karelsim"],
 function(karelsim) {
 
+
+
+karelsim.world_Hurdles1 = function() {
+	"use strict";
+	clearWorld(6, 4);
+	setNumBeepersInKarelsBag(100);
+	wall(2  , 1, karelsim.TOP + karelsim.BOTTOM);
+	wall(2  , 1.5, karelsim.TOP + karelsim.BOTTOM);
+};
+
+
+
+karelsim.world_BackAndForth1 = function() {
+	"use strict";
+	clearWorld(4, 3);
+	setNumBeepersInKarelsBag(10);
+	
+	wall(1  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(1.5, 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 1.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(3  , 1.5, karelsim.RIGHT + karelsim.LEFT);
+
+	wall(2  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(2.5, 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+	wall(3.5, 2.5, karelsim.RIGHT + karelsim.LEFT); 
+	wall(4  , 2.5, karelsim.RIGHT + karelsim.LEFT);
+		
+	beeper(4, 3);
+	karel(1, 1, 'north');
+	return 0;
+};
+	
+
+
+
 karelsim.world_BackAndForth1 = function() {
     "use strict";
 	clearWorld(4, 3);
