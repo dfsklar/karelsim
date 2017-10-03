@@ -879,7 +879,8 @@ if(nn) document.captureEvents(Event.KEYDOWN);
 
 // Resizing pgm area
 karelsim.pgmResize = function(widthFactor, heightFactor) {
-    "use strict";
+	"use strict";
+	/*
 	var $pgm, rows, $linedWrapDiv, width;
 	$pgm = $("#pgm");
 	if ( widthFactor !== 1 ) {
@@ -909,6 +910,7 @@ karelsim.pgmResize = function(widthFactor, heightFactor) {
 	        $pgm.trigger("scroll");
 		}
 	}
+	*/
 };
 karelsim.pgmNarrow   = function() { karelsim.pgmResize(0.833, 1); };
 karelsim.pgmWiden    = function() { karelsim.pgmResize(1.2, 1); };
@@ -926,6 +928,7 @@ karelsim.hideUIElements = function() {
 	$("#currentline").hide();
 };
 
+
 karelsim.makeGutterMarker = function() {
 		var marker = document.createElement("div");
 		marker.style.color = "#822";
@@ -941,7 +944,7 @@ karelsim.prettifyProgramTextArea = function() {
 		mode: 'javascript',
 		gutters: ["CodeMirror-linenumbers", 'breakpoints'],
 		lineNumbers: true });
-	karelsim.codemirror.setGutterMarker(2, 'breakpoints', karelsim.makeGutterMarker());
+	karelsim.gutterball = karelsim.makeGutterMarker();
 };
 
 karelsim.init = function() {	
@@ -1118,73 +1121,23 @@ karelsim.canStep = function() {
 	return ( !karelsim.needReset() );
 };
 
-// NOTE: FRAGILE... Depends on HTML layout (location of #syntaxerror 
-//       and #currentline) and CSS for #pgm
-karelsim.lineNumber2Top = function(lineNumber) {
-    return ( 12 + 16*lineNumber );
-};
 
 // In the given text area which has the given # pixels per line, place the given
 // image at the given line number, scrolling the text area if necessary so given
 // line is on the screen
-karelsim.positionPointerImage = function($textArea, pixelsPerLine, $image, lineNumber) { 
-    "use strict";
-	var textAreaHeight, currentScrollTop, newScrollTop, remainder, numLinesShown,
-        firstLineShown, lastLineShown, lineNumberOnScreen;
-	if ( lineNumber === 0 ) {
-	    $textArea.scrollTop(0);
-		// Show given image at the right place (css.top value)
-		$image.css("top", karelsim.lineNumber2Top(lineNumber)).show();
-		return;
-	}
+//
+// In the original karelsim, this was an arduous task.
+// With CodeMirror this has become trivial.
 
-	textAreaHeight   = $textArea.height();    // Height in pixels
-	currentScrollTop = $textArea.scrollTop(); // Current scrollTop() value in pixels
-	
-	// Nudge scrollTop to be a value evenly divisible by pixelsPerLine
-	remainder = currentScrollTop % pixelsPerLine;
-	if ( remainder !== 0 ) {
-	    if ( remainder < pixelsPerLine/2 ) {
-		    currentScrollTop = currentScrollTop - remainder;
-		} else {
-		    currentScrollTop = currentScrollTop + pixelsPerLine - remainder;
-		}
-		$textArea.scrollTop(currentScrollTop);
-		// Reality may not actually match what we just tried to do; Use reality
-		currentScrollTop = $textArea.scrollTop();
+karelsim.lastLinePainted = null;
+karelsim.positionPointerImage = function($textArea, pixelsPerLine, $image, lineNumber) { 
+	"use strict";
+	lineNumber = Math.max(0, lineNumber - 1);
+	if (karelsim.lastLinePainted) {
+		karelsim.codemirror.setGutterMarker(lineNumber, 'breakpoints', null);
 	}
-	
-	numLinesShown  = Math.round(textAreaHeight / pixelsPerLine);
-	firstLineShown = Math.round(currentScrollTop / pixelsPerLine);
-	lastLineShown  = firstLineShown + numLinesShown - 1;
-	
-	if ( ( lineNumber >= firstLineShown ) && ( lineNumber <= lastLineShown ) ) {
-	    // Line number is already on screen
-		lineNumberOnScreen = lineNumber - firstLineShown;
-			
-	} else if ( lineNumber >= lastLineShown ) {
-	    // Line number is off the screen below what is currently shown... scroll down
-		newScrollTop = (lineNumber-3) * pixelsPerLine;
-		$textArea.scrollTop(newScrollTop);
-		// May not have actually scrolled all the way down (if lines end before 
-        // the end of the given text area). Use reality.
-		newScrollTop = $textArea.scrollTop();
-		firstLineShown = newScrollTop / pixelsPerLine;
-		lineNumberOnScreen = lineNumber - firstLineShown;
-		
-	} else {
-	    // Line number is off the screen above what is currently shown... scroll up
-		newScrollTop = (lineNumber-3) * pixelsPerLine;
-		newScrollTop = (newScrollTop >= 0 ? newScrollTop : 0); // Protection
-		$textArea.scrollTop(newScrollTop);
-		// May not have actually scrolled all the way up (actually should, but being
-		// careful here); Use reality.
-		newScrollTop = $textArea.scrollTop();
-		firstLineShown = newScrollTop / pixelsPerLine;
-		lineNumberOnScreen = lineNumber - firstLineShown;
-	}
-	// Show current line pointer
-	$image.css("top", karelsim.lineNumber2Top(lineNumberOnScreen)).show();
+	karelsim.codemirror.setGutterMarker(lineNumber, 'breakpoints', karelsim.gutterball);
+	karelsim.codemirror.scrollIntoView({line: lineNumber, ch:1});
 };
 	
 // checkSyntax -- Parse the code in the 'pgm' text area 
@@ -1199,8 +1152,7 @@ karelsim.checkSyntax = function(bQuietOnSuccess) {
 	$("#syntaxerror").hide(); // Any previous syntax error
 	$("#currentline").hide(); // In case was visible and now we get a compiler error
 	
-	$pgm = $("#pgm");
-	programSource = $pgm.val();
+	programSource = karelsim.codemirror.getValue();
 	
 	if ( $.trim(programSource) === "" ) {
 	    if ( !bQuietOnSuccess ) {
