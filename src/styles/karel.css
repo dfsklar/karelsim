@@ -254,6 +254,12 @@ a.button-a {
   margin-bottom:10px;
 }
 
+.CodeMirror.cm-s-default {
+  width: 400px;
+  height: 500px;
+  font-size: 15px;
+}
+
 #bottomcontent {
   border-top:4px solid #000;
   height:50px;
@@ -270,7 +276,7 @@ h1 {
 }
 
 .breakpoints {
-  width: 8px;
+  width: 11px;
 }
 
 .break {

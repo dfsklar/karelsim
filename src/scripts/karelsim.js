@@ -931,7 +931,9 @@ karelsim.hideUIElements = function() {
 
 karelsim.makeGutterMarker = function() {
 		var marker = document.createElement("div");
-		marker.style.color = "#822";
+		marker.style.color = "red";
+		marker.style.fontSize = "20px";
+		marker.style.marginTop = "-2px";
 		marker.innerHTML = "●";
 		return marker;
 };
@@ -955,7 +957,7 @@ karelsim.init = function() {
 	//*jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN + jsim.LOG_EXEC);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED);
-	jsim.setStepDelay(800); // Controls playback speed
+	jsim.setStepDelay(500); // Controls playback speed
 	jsim.setPreStepCallback(karelsim.jsimPreStep);
 	jsim.setEndOfExecutionCallback(karelsim.jsimEndOfExecution);
 	
