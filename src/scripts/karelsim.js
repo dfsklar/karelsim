@@ -82,8 +82,9 @@ var karelsim = {
 	lastGrammarChosen:     null,             // TS when grammar was last chosen/set
     lastPassedSyntaxCheck: null,             // TS when pgm last passed syntax check
     lastProgramEdit:       null,             // TS when pgm was last edited/changed
-    lastProgramReset:      null              // TS when pgm was last reset to beginning
+    lastProgramReset:      null,              // TS when pgm was last reset to beginning
 
+	codemirror:  null
 };
 
 
@@ -925,12 +926,22 @@ karelsim.hideUIElements = function() {
 	$("#currentline").hide();
 };
 
+karelsim.makeGutterMarker = function() {
+		var marker = document.createElement("div");
+		marker.style.color = "#822";
+		marker.innerHTML = "●";
+		return marker;
+};
+
 karelsim.prettifyProgramTextArea = function() {
-    "use strict";
+	"use strict";
+	
 	// Make 'pgm' textarea into a nicer, numbered, lined text area
-	$("#pgm").linedtextarea(
-		{selectedLine: 0}
-	);
+	karelsim.codemirror = CodeMirror.fromTextArea($("#pgm")[0], {
+		mode: 'javascript',
+		gutters: ["CodeMirror-linenumbers", 'breakpoints'],
+		lineNumbers: true });
+	karelsim.codemirror.setGutterMarker(2, 'breakpoints', karelsim.makeGutterMarker());
 };
 
 karelsim.init = function() {	

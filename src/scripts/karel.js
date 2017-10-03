@@ -6,7 +6,6 @@ require.config({
         "plugins":                    "libs/plugins",
         "css3-mediaqueries":          "libs/css3-mediaqueries",
 		"Ember":                      "libs/ember-0.9.7.1.min",
-
 		"peg":                        "libs/peg/peg-0.7.0",
 		"linedtextarea":              "../jquery-linedtextarea/jquery-linedtextarea"
     },
