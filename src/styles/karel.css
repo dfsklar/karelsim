@@ -86,7 +86,12 @@ li {
   overflow:hidden;
 }
 
+.equiwidth {
+  width: 230px;
+}
+
 #leftcontent {
+  width: 500px;
   border-top:0px solid #000;
   border-right:4px solid #000;
   border-bottom:0px solid #000; 
@@ -255,9 +260,9 @@ a.button-a {
 }
 
 .CodeMirror.cm-s-default {
-  width: 400px;
-  height: 500px;
-  font-size: 15px;
+  width: 490px;
+  height: 400px;
+  font-size: 13px;
 }
 
 #bottomcontent {

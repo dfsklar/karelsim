@@ -266,12 +266,24 @@ karelsim.world_EightByEightWithRandomBeepers = function() {
 
 
 
-karelsim.world_TwelveByFourWithHurdles1 = function() {
+karelsim.world_RegularlySpaced = function() {
   "use strict";
   clearWorld(10, 4);
   wall(2.5, 1, karelsim.TOP+karelsim.BOTTOM);
   wall(4.5, 1, karelsim.TOP+karelsim.BOTTOM);
   wall(6.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(8.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  karel(1, 1, 'east');
+  beeper(10, 1);
+  return 0;
+};
+
+karelsim.world_DifferentlySpaced = function() {
+  "use strict";
+  clearWorld(10, 4);
+  wall(2.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(4.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(7.5, 1, karelsim.TOP+karelsim.BOTTOM);
   karel(1, 1, 'east');
   beeper(10, 1);
   return 0;

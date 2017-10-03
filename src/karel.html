@@ -69,15 +69,15 @@
           </form>
 
           
-		  <a class='button-a btnResetProgram' id="btnResetProgram" href="#">Reset Karel to its "home position".</a><br />
+		  <a class='button-a btnResetProgram' id="btnResetProgram" href="#">Reset</a><br />
 		  <!--
           <a id="btnTurnOn"     href="#">Turn on</a><br />
           <a id="btnTurnOff"    href="#">Turn off</a><br /> -->
-          <a class='button-a' id="btnMove" href="#"><tt>move();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt> Go forward 1 position</a><br />
+          <a class='button-a equiwidth' id="btnMove" href="#"><tt>move();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt> Go forward 1 block</a>
           <!-- <a id="btnTurnLeft"   href="#">Turn left</a><br /> -->
-          <a class='button-a' id="btnTurnRight"  href="#"><tt>turnRight();&nbsp;&nbsp;</tt> Turn right</a><br />
-          <a class='button-a' id="btnPickBeeper" href="#"><tt>pickBeeper();&nbsp;</tt> Pick up a beeper</a><br />
-          <a class='button-a' id="btnPutBeeper"  href="#"><tt>putBeeper();&nbsp;&nbsp;</tt> Put down a beeper</a><br />
+          <a class='button-a equiwidth' id="btnTurnRight"  href="#"><tt>turnRight();&nbsp;&nbsp;</tt> Turn right</a><br />
+          <a class='button-a equiwidth' id="btnPickBeeper" href="#"><tt>pickBeeper();&nbsp;</tt> Pick up a beeper</a>
+          <a class='button-a equiwidth' id="btnPutBeeper"  href="#"><tt>putBeeper();&nbsp;&nbsp;</tt> Put down a beeper</a><br />
           <br /></div>
 		  
           <hr />
@@ -113,10 +113,26 @@
           <form id="f_pgm">
 		    <img id="syntaxerror" src="images/exclamationpoint.gif" style="display:none;" />
 		    <img id="currentline" src="images/bluearrow.gif" style="display:none;" />
-            <textarea id="pgm" class="lined" cols=46 rows=25 wrap="soft"	>
+            <textarea id="pgm" class="lined" cols=46 rows=25 wrap="soft"	>// Put your team's names here.
+
+function turnLeft() {
+	turnRight();
+	turnRight();
+	turnRight();
+}
+
+function moveIfSafe() {
+	if (isFrontClear()) {
+		move();
+	}
+}
+
+// Your program STARTS here!
 function main() {
-  move();
-}</textarea>
+	turnRight();
+	moveIfSafe();
+}
+</textarea>
           </form>
 		  
 		  <div class=hidden id="program_sizing">
@@ -159,8 +175,9 @@ function main() {
 								<option value="world_BackAndForth1a">Back&amp;Forth #2 (3 long rows)</option>
 								<option value="world_BackAndForth2">Back&amp;Forth #3 (4 rows)</option>
 								
-								<option value='world_TwelveByFourWithHurdles1'>Hurdles #1</option>
-								<option value='world_TwelveByFourWithHurdles2'>Hurdles #2</option>
+								<option value='world_RegularlySpaced'>Hurdles Regularly Spaced</option>
+								<option value='world_DifferentlySpaced'>Hurdles Differently Spaced</option>
+								<option value='world_TwelveByFourWithHurdles2'>Hurdles Different Heights</option>
 								<option value='world_TwelveByFourWithRandomHurdles'>Hurdles RANDOM!</option>
 							</select>
 			</span>
