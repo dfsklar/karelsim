@@ -266,6 +266,26 @@ karelsim.world_EightByEightWithRandomBeepers = function() {
 
 
 
+karelsim.world_empty7x7 = function() {
+  clearWorld(7, 7);
+  karel(1, 1, 'north');
+  setNumBeepersInKarelsBag(100);  
+  return 0;
+}
+
+
+karelsim.world_littered3x3 = function() {
+  clearWorld(3, 3);
+  karel(1, 1, 'east');
+  beeper(1, 1);
+  beeper(1, 2);
+  beeper(2, 3);
+  beeper(3, 2);
+  beeper(3, 1);
+  return 0;
+}
+
+
 karelsim.world_RegularlySpaced = function() {
   "use strict";
   clearWorld(10, 4);
