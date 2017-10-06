@@ -252,15 +252,23 @@ jsim.setCurrentStepName = function(sStepName) {
 jsim.getCurrentLineNumber = function() {
     "use strict";
 	var currentStepName, currentStep;
-	try {
+	// try {
 	    currentStepName = jsim.callStack.getCurrentStackFrame().currentStepName;
 		currentStep = jsim.stepsHash.getStep(currentStepName);
+		// ^^^ The previous line can produce NULL in cases where the program
+		// is syntactically correct but has semantic problems.
+		// E.g. the line:
+		//     unknownIdentifier;
+		// produces this case.
+		// Previous version of this function (Mike's era) just assumed 1, but that is
+		// a problem.  I'm letting this throw an exception instead.
 		return currentStep.line;
+	/*
 	} catch ( ex ) {
 	    jsim.logInternal(jsim.LOG_INTERNAL_ERROR,
                          "getCurrentLineNumber: ERROR: Could not get current line number.");
 		return 1; // Better than nothing...
-	}
+	} */
 };
 
 

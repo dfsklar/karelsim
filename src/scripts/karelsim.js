@@ -522,12 +522,17 @@ karelsim.loadWorldUsingForm = function() {
 	}
 };
 
-// checkSyntaxOnly -- Parse the code in the 'pgm' text area but doesn't run the code
+// checkSyntaxOnly -- Parse the code in the 'pgm' text area but doesn't run the code.
+// Returns 0 if syntax OK, or -1 otherwise.
 karelsim.checkSyntaxOnly = function() {
     "use strict";
-    karelsim.checkSyntax(/*bQuietOnSuccess=*/false);
+    return karelsim.checkSyntax(/*bQuietOnSuccess=*/false);
 };
 
+
+/*
+Returns boolean: true means the source code was examined and found sane.
+*/
 karelsim.resetProgram = function() {
     "use strict";
 	var syntaxCheckResult;
@@ -536,14 +541,22 @@ karelsim.resetProgram = function() {
     syntaxCheckResult = karelsim.checkSyntax(/*bQuietOnSuccess=*/true);
 	if ( syntaxCheckResult !== 0 ) {
 	    // Syntax check already gave message(s) about issues... just return here
-		return;
+		return false;
 	}
 	
-	// Perform reset...
-	jsim.resetProgram();
-	
+	// Perform reset.
+	// Note that this can fail due to semantic errors that are not caught by the syntax pass.
+	try {
+		jsim.resetProgram();
+	} catch (ex) {
+		karelsim.errorMessage("Karel says your program has something weird about it.");
+		karelsim.errorMessage("Try fixing it and then hit 'Reset' to re-check your program.");
+		return false;
+	}
+
 	karelsim.lastProgramReset = karelsim.now();
 	$("#btnStepOver").find("img").attr("src", "images/icon-stepover.gif");
+	return true;
 };
 
 karelsim.stepOver = function() {
@@ -1124,6 +1137,19 @@ karelsim.canStep = function() {
 };
 
 
+/*
+During a "automated run", we want to disable the textedit box
+and ALL buttons (immediate mode as well as prog mode), but we want
+to enable a STOP button normally invisible.
+
+This is not to be used for "step" situations.  We need to come up
+with a strategy for "gentle locking" during a step scenario.
+*/
+karelsim.lockDuringRun = function() {
+
+};
+
+
 // In the given text area which has the given # pixels per line, place the given
 // image at the given line number, scrolling the text area if necessary so given
 // line is on the screen
@@ -1143,6 +1169,7 @@ karelsim.positionPointerImage = function($textArea, pixelsPerLine, $image, lineN
 };
 	
 // checkSyntax -- Parse the code in the 'pgm' text area 
+//        Returns 0 if syntax OK, or -1 if syntax bad.
 //                bQuietOnSuccess: true means only complain about invalid syntax
 //                                 otherwise don't "say" anything
 //                                 false means "say" something, even in cases of 
@@ -1173,6 +1200,9 @@ karelsim.checkSyntax = function(bQuietOnSuccess) {
 		karelsim.lastPassedSyntaxCheck = karelsim.now();
 		return 0;
 	} catch ( ex ) {
+		// DFSKLARD: this is where things go if the SYNTAX check fails.  But this 
+		// is unrelated to the post-parse semantics checking that occurs downstream.
+		// Currently, that post-parse generates an uncaught exception.
 	    msg = ex.message;
 	    karelsim.errorMessage("Karel says your program is 'not readable'.");
 		lineNumber = ex.parameterValues[1];
@@ -1199,12 +1229,24 @@ karelsim.jsimPreStep = function() {
 		
 	$pgm = $("#pgm");
 
-	lineNumber = jsim.getCurrentLineNumber();          // Current pgm line #
+	try {
+		lineNumber = jsim.getCurrentLineNumber();          // Current pgm line #
+	} 
+    catch (ex) {
+		// See comment in jsim.getCurrentLineNumber re: the program problems
+		// that can cause this.  Merely inform the user that Karel can't
+		// understand the program.
+		karelsim.errorMessage('Karel cannot really understand your program.');
+		throw (ex);
+	}
+
 	lineNumber = (lineNumber === -1 ? 0 : lineNumber); // Just in case...
 
 	pixelsPerLine = 16;  // NOTE: FRAGILE: Depends on CSS of #pgm
 	karelsim.positionPointerImage($pgm, pixelsPerLine, $("#currentline"), lineNumber);
 };
+
+
 
 // jsimEndOfExecution -- Callback supplied to jsim. 
 //                       jsim calls this when done executing pgm

@@ -60,8 +60,8 @@ karelsim.addEventListeners = function() {
 			turnOn();
 			karelsim.loadWorldUsingForm();
 			karelsim.clearLog();	
-			karelsim.resetProgram();    
-			karelsim.runProgram();      
+			if (karelsim.resetProgram())
+				karelsim.runProgram();      
 			return false; } 
 		},
 		

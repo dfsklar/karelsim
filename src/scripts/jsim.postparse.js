@@ -131,7 +131,8 @@ jsim.addLocalVariablesToFunctionTable = function() {
 };
 
 // After jsim.parseIfNecessary() runs and jsim.syntax object is built, 
-// do some more processing which gets us ready to reset or run the program
+// do some more processing which gets us ready to reset or run the program.
+// Throws exception!!
 jsim.postParseIfNecessary = function() {
     "use strict";
 	try {
