@@ -563,8 +563,7 @@ karelsim.stepOver = function() {
     "use strict";
 	
 	if ( karelsim.needReset() ) {
-    	alert("Your program has changed since you last reset it to the beginning. " +
-		      "Reset your program.");
+    	alert("You changed your program code!\nSo, you must 'Reset' before you can run the new version.");
 		return;
 	}
 
@@ -818,7 +817,7 @@ karelsim.icon = function(iconId) {
 
 // pgmChanged -- Event handler for onkeyup and onblur events on pgm textarea
 karelsim.pgmChanged = function() {
-    "use strict";
+	"use strict";
 	karelsim.lastProgramEdit = karelsim.now();
 	$("#btnStepOver").find("img").attr("src", "images/icon-stepover-disabled.gif");
 };
@@ -965,6 +964,7 @@ karelsim.prettifyProgramTextArea = function() {
 		mode: 'javascript',
 		gutters: ["CodeMirror-linenumbers", 'breakpoints'],
 		lineNumbers: true });
+	karelsim.codemirror.on("change", karelsim.pgmChanged);
 	karelsim.gutterball = karelsim.makeGutterMarker();
 };
 
