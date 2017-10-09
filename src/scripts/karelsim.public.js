@@ -65,6 +65,9 @@ function karel(wx, wy, direction)    { karelsim.setKarel("on", wx, wy, direction
 function beeper(wx, wy)              { karelsim.addBeeper(wx, wy); }
 function setNumBeepersInKarelsBag(n) { karelsim.setNumBeepersInKarelsBag(n); }
 
+
+
+
 // ----- WORLD LOADING -----
 
 // worldName is the name of a JS method on karelsim that will be executed

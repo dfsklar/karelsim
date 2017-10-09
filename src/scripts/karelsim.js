@@ -968,6 +968,19 @@ karelsim.prettifyProgramTextArea = function() {
 	karelsim.gutterball = karelsim.makeGutterMarker();
 };
 
+karelsim.getUrlVars = function()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 karelsim.init = function() {	
 	// Initialize jsim
 	jsim.init();
@@ -976,7 +989,7 @@ karelsim.init = function() {
 	//*jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN + jsim.LOG_EXEC);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED);
-	jsim.setStepDelay(500); // Controls playback speed
+	jsim.setStepDelay(500); // Controls playback speed.  Decrease this to make it FASTER.
 	jsim.setPreStepCallback(karelsim.jsimPreStep);
 	jsim.setEndOfExecutionCallback(karelsim.jsimEndOfExecution);
 	
@@ -1002,9 +1015,26 @@ karelsim.init = function() {
 	karelsim.grammarChosen();
 	
 	karelsim.prettifyProgramTextArea();
-    karelsim.hideUIElements();
+
+	var urlVars = karelsim.getUrlVars();
+	if (urlVars.download)
+		// Load a particular sample program from URL
+		karelsim.download_karel_program(urlVars.download);
+
+	karelsim.hideUIElements();
 	karelsim.addEventListeners();
 };
+
+// ----- LOADING KAREL PROGRAM FROM SERVER-SIDE REPO 
+
+karelsim.download_karel_program = function(progname) {
+	var url = "/sample_karel_programs/" + progname + ".karel";
+	$.get(url, null, function(data, textStatus, jqXHR) {
+		// This is the success callback after the response is returned.
+		karelsim.codemirror.setValue(data);
+	});
+}
+
 
 karelsim.loadGrammarList = function() {
     "use strict";
