@@ -379,6 +379,10 @@ dl {
   margin-left:20px;
 }
 
+.locked {
+  background-color: #c5c5c5 !important;
+}
+
 #syntaxerror {
   z-index:2;
   position:relative;

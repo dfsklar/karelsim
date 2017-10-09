@@ -634,16 +634,22 @@ karelsim.runProgram = function() {
     //     tmpFunc();
 	// We don't do this because we want a simulation so we can step, slow, etc.
 
-	jsim.setErrorMessageCallback(function(msg) {
+	jsim.setErrorMessageCallback(function(msg, type) {
+		// type is either "cantdo" or "cantunderstand".
+		// default is "cantdo".
 		karelsim.errorMessage(msg);
+		if (type == "cantunderstand")
+			alert("Karel cannot understand your program.  The error is near the red dot.");
 		karelsim.errorTurnOff();
+		karelsim.unlock();
 	});
 	
 	try {
     	// Perform post-parse processing (generate steps, primarily)
 	    jsim.resetProgram();
 	
-	    // Kick off the execution... steps will occur via a setInterval()
+		// Kick off the execution... steps will occur via a setInterval()
+		karelsim.lockDuringRun();
 	    jsim.executeProgram();
 	} catch ( ex ) {
         karelsim.errorMessage("An internal error occurred.");
@@ -1146,7 +1152,12 @@ This is not to be used for "step" situations.  We need to come up
 with a strategy for "gentle locking" during a step scenario.
 */
 karelsim.lockDuringRun = function() {
-
+	karelsim.codemirror.setOption('readOnly', 'nocursor');
+	$('.CodeMirror.cm-s-default').addClass('locked');
+};
+karelsim.unlock = function() {
+	karelsim.codemirror.setOption('readOnly', false);
+	$('.CodeMirror.cm-s-default').removeClass('locked');
 };
 
 
@@ -1204,7 +1215,8 @@ karelsim.checkSyntax = function(bQuietOnSuccess) {
 		// is unrelated to the post-parse semantics checking that occurs downstream.
 		// Currently, that post-parse generates an uncaught exception.
 	    msg = ex.message;
-	    karelsim.errorMessage("Karel says your program is 'not readable'.");
+		karelsim.errorMessage("Karel says your program is 'not readable'.");
+		alert("Karel says your program is not readable.");
 		lineNumber = ex.parameterValues[1];
 
 		// NOTE: Wish I knew how to set the selectedLine of the textarea
@@ -1237,6 +1249,7 @@ karelsim.jsimPreStep = function() {
 		// that can cause this.  Merely inform the user that Karel can't
 		// understand the program.
 		karelsim.errorMessage('Karel cannot really understand your program.');
+		alert("Karel says your program is not readable.");		
 		throw (ex);
 	}
 
@@ -1252,7 +1265,8 @@ karelsim.jsimPreStep = function() {
 //                       jsim calls this when done executing pgm
 karelsim.jsimEndOfExecution = function() {
     "use strict";
-    karelsim.infoMessage("Karel finished running your program.");
+	karelsim.infoMessage("Karel finished running your program.");
+	karelsim.unlock();
 };
 
 

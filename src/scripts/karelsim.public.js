@@ -141,7 +141,7 @@ function getWorldHeight() { return karelsim.maxwy_; }
 function move() {
     "use strict";
 	if ( karelsim.karelStatus !== 'on' ) {
-	    karelsim.errorMessage('Karel cannot move when he is off.');
+	    karelsim.errorMessage('Karel cannot move when it is turned off.');
 		karelsim.errorTurnOff();
 	} else if ( ! ( karelsim.isWallAt(karelsim.karelwx+karelsim.XDELTA[karelsim.karelDir]/2, 
 	                karelsim.karelwy+karelsim.YDELTA[karelsim.karelDir]/2) ) ) {
@@ -175,7 +175,7 @@ function turnRight() {
     	karelsim.setKarelDirection(karelsim.RIGHTTURN[karelsim.karelDir]);
 	    karelsim.infoMessage('turnRight();');
 	} else {
-	    karelsim.errorMessage('Karel cannot turn right when he is off.');
+	    karelsim.errorMessage('Karel cannot turn right when it is turned off.');
 		karelsim.errorTurnOff();
 	}
 }
@@ -187,7 +187,7 @@ function turnRight() {
 function pickBeeper() { 
     "use strict";
 	if ( karelsim.karelStatus !== 'on' ) {
-	    karelsim.errorMessage('Karel cannot pick up a beeper when he is off.');
+	    karelsim.errorMessage('Karel cannot pick up a beeper when it is turned off.');
 		karelsim.errorTurnOff();
 	} else if ( isNotNextToABeeper() ) {
 	    karelsim.errorMessage('This intersection has NO beeper..');
@@ -207,7 +207,7 @@ function pickBeeper() {
 function putBeeper() {
     "use strict";
 	if ( karelsim.karelStatus !== 'on' ) {
-	    karelsim.errorMessage('Karel cannot put down a beeper when he is off.');
+	    karelsim.errorMessage('Karel cannot put down a beeper when it is turned off.');
 		karelsim.errorTurnOff();
 	} else if ( isNoBeepersInBackpack() ) {
 	    karelsim.errorMessage('Karel\'s backpack is empty - it has no beeper to put down.');
@@ -243,7 +243,7 @@ function turnOn() {
 function turnOff() {
     "use strict";
 	if ( karelsim.karelStatus !== 'on' ) {
-    	karelsim.errorMessage('Karel is already off.');
+    	karelsim.errorMessage('Karel is already turned off.');
 		karelsim.errorTurnOff();
 	} else {
 	    karelsim.setKarelStatus('off');

@@ -640,7 +640,7 @@ jsim.performStep = function() {
 			}
 		}
 	} catch ( ex ) {
-		this.fcnErrorMessage(ex.message);
+		this.fcnErrorMessage(ex.message, "cantunderstand");
 	    jsim.logInternal(jsim.LOG_INTERNAL_ERROR,
 		                 "step: Exception: " + ex.message);
 		throw ( ex );
