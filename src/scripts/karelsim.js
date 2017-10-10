@@ -989,7 +989,7 @@ karelsim.init = function() {
 	//*jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN + jsim.LOG_EXEC);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED + jsim.LOG_CALL_RETURN);
 	//jsim.setDebugLevel(jsim.LOG_INTERNAL_ERROR + jsim.LOG_UNEXPECTED);
-	jsim.setStepDelay(500); // Controls playback speed.  Decrease this to make it FASTER.
+	jsim.setStepDelay(300); // Controls playback speed.  Decrease this to make it FASTER.
 	jsim.setPreStepCallback(karelsim.jsimPreStep);
 	jsim.setEndOfExecutionCallback(karelsim.jsimEndOfExecution);
 	

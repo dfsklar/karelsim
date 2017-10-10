@@ -1,0 +1,41 @@
+// By Will.
+// LIMITATIONS: Only works for the city called
+// "Low Hurdles Regularly Spaced".
+
+function turnLeft() {
+	turnRight();
+	turnRight();
+	turnRight();
+}
+
+// JUST BEFORE USING THIS:
+// Make sure Karel is facing East
+// and is directly in front of the hurdle.
+// JUST AFTER IT RUNS:
+// Karel will be facing East with the hurdle
+// just behind it.
+// LIMITATIONS: Can only jump over hurdles that
+// are one block high!
+function jumpOverHurdle() {
+  turnLeft();
+  move();
+  turnRight();
+  move();
+  turnRight();
+  move();
+  turnLeft();
+}
+
+// Your program STARTS here!
+function main() {	
+  move();
+  jumpOverHurdle();
+  move();
+  jumpOverHurdle();
+  move();
+  jumpOverHurdle();
+  move();
+  jumpOverHurdle();
+  move();
+  pickBeeper();
+}

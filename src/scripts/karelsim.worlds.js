@@ -302,8 +302,9 @@ karelsim.world_DifferentlySpaced = function() {
   "use strict";
   clearWorld(10, 4);
   wall(2.5, 1, karelsim.TOP+karelsim.BOTTOM);
-  wall(4.5, 1, karelsim.TOP+karelsim.BOTTOM);
-  wall(7.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(3.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(5.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(8.5, 1, karelsim.TOP+karelsim.BOTTOM);
   karel(1, 1, 'east');
   beeper(10, 1);
   return 0;
@@ -328,6 +329,7 @@ karelsim.world_TwelveByFourWithHurdles2 = function() {
 };
 
 
+// Random heights and spacing
 karelsim.world_TwelveByFourWithRandomHurdles = function() {
   "use strict";
   var nn, ii, xx, hh, jj;
@@ -345,6 +347,28 @@ karelsim.world_TwelveByFourWithRandomHurdles = function() {
   beeper(10, 1);
   return 0;
 };
+
+
+
+// Random spacing
+karelsim.world_TwelveByFourWithRandomLowHurdles = function() {
+  "use strict";
+  var nn, ii, xx, hh, jj;
+  clearWorld(10, 4);
+  
+  nn = Math.floor(Math.random() * 4) + 1;      // Between 1 and 4 hurdles
+  for (ii = 0; ii < nn; ii += 1) {
+      xx = Math.floor(Math.random() * 9) + 2.5; // Hurdle x-position between 2.5 and 9.5
+      hh = 1;
+    for (jj = 0.5; jj < (hh+1)/2; jj += 0.5) {
+        wall(xx, jj, karelsim.TOP+karelsim.BOTTOM);
+    }
+  }
+  karel(1, 1, 'east');
+  beeper(10, 1);
+  return 0;
+};
+
 
 karelsim.world_EmptyTwelveByEightWithBeepersInBag = function() {
     "use strict";
