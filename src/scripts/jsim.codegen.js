@@ -692,13 +692,26 @@ jsim.gssIfStatement = function(sb, node, curName, curNum) {
     // else block.	
 	condElsName = curName + "_" + curNum + "_F";
 	condElsNum  = 1;
-	
+
+	// DFSKLAR added this on 19OCT2017: see comment below.
+	var else_clause_does_exist = 
+	   ( ( typeof elsn !== "undefined" ) && ( elsn !== null ) );
+		
 	ss = "jsim.stepsHash.addStepV(" +
 		 this.makeQuotedStepName(curName, curNum) + ", " +
 		 "function() { return jsim._cond(" + expr + "); }, " +
 		 line + ", " +
 		 this.makeQuotedStepName(condIfName, condIfNum) + ", " +
-		 this.makeQuotedStepName(condElsName, condElsNum) + ", " +
+		 // DFSKLAR repaired a fatal problem in this logic: 
+		 // if there was no else block, this was unconditionally
+		 // using the _F_ step name even though that step name would
+		 // never end up being registered.
+		 // The repair is to go to curName/curNum+1 in the case where
+		 // there is never goint to be an _F_ step.
+		 (else_clause_does_exist ? 
+			 this.makeQuotedStepName(condElsName, condElsNum) : 
+			 this.makeQuotedStepName(curName, (curNum+1)))
+		 + ", " +
 		 "null" + ", " +
 		 "false, false);";
 	sb.append(ss); sb.append("\n");		
@@ -739,7 +752,7 @@ jsim.gssIfStatement = function(sb, node, curName, curNum) {
 	sb.append(ss); sb.append("\n");
 
 	// Body of the "else" part of the if statement, if present
-	if ( ( typeof elsn !== "undefined" ) && ( elsn !== null ) ) {
+	if (else_clause_does_exist) {
 	    this.validateObject(elsn.type, "jsim.gssIfStatement", "elseStatement.type");
 		// A real elseStatement exists
 		if ( elsn.type === "Block" ) {

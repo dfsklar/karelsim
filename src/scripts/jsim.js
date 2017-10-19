@@ -202,7 +202,7 @@ jsim.setDebugLevel = function(levelsMask) {
 }
 
 jsim.logInternal = function(level, msg) {
-	if ( (this.debugLevel & level) !== 0 ) {
+	if ( true || ((this.debugLevel & level) !== 0 )) {
 	    console.log(msg);
 	}
 	return this;
@@ -262,7 +262,10 @@ jsim.getCurrentLineNumber = function() {
 		// produces this case.
 		// Previous version of this function (Mike's era) just assumed 1, but that is
 		// a problem.  I'm letting this throw an exception instead.
-		return currentStep.line;
+		if (currentStep === null)
+			return 1;
+		else
+			return currentStep.line;
 	/*
 	} catch ( ex ) {
 	    jsim.logInternal(jsim.LOG_INTERNAL_ERROR,
@@ -632,6 +635,8 @@ jsim.performStep = function() {
 			// Doing this here, at the end, hides the initial "artificial" step that 
 			// starts things off and allows the UI to refresh, showing the current line 
 			// position *before* it is executed
+			console.log("GET CURRENT STEP NAME");
+			console.log(jsim.getCurrentStepName());
 			if ( ( jsim.getCurrentStepName() === "__END__" ) && 
 				 ( jsim.fcnEndOfExecution !== null ) ) {
 				jsim.fcnEndOfExecution();
