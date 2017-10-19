@@ -563,6 +563,8 @@ karelsim.resetProgram = function() {
 karelsim.stepOver = function() {
     "use strict";
 	
+	karelsim.unlock();
+
 	if ( karelsim.needReset() ) {
     	alert("You changed your program code!\nSo, you must 'Reset' before you can run the new version.");
 		return;
@@ -570,6 +572,7 @@ karelsim.stepOver = function() {
 
 	// Perform single step...
 	jsim.performStep();
+	karelsim.pause();
 };
 
 karelsim.speedUp = function() {
@@ -584,6 +587,7 @@ karelsim.slowDown = function() {
 
 karelsim.pause = function() {
 	jsim.pause();
+	karelsim.unlock();
 };
 
 karelsim.togglePause = function() {
@@ -1279,8 +1283,8 @@ karelsim.jsimPreStep = function() {
 		// See comment in jsim.getCurrentLineNumber re: the program problems
 		// that can cause this.  Merely inform the user that Karel can't
 		// understand the program.
-		karelsim.errorMessage('Karel cannot really understand your program.');
-		alert("Karel says your program is not readable.");		
+		karelsim.errorMessage('Karel cannot fully understand your program.');
+		alert("Karel cannot fully understand your program.");		
 		throw (ex);
 	}
 
