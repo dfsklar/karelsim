@@ -1010,7 +1010,7 @@ karelsim.init = function() {
 	karelsim.loadCommandList(); 
 
 	// Load a sample world
-	karelsim.callMethodByName(karelsim, "world_BackAndForth1"); 
+	karelsim.callMethodByName(karelsim, "world_RegularlySpaced");
 	
 	// Set default grammar... first/selected grammar in grammars drop down
 	karelsim.grammarChosen();

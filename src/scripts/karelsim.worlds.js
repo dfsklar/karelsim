@@ -298,6 +298,25 @@ karelsim.world_RegularlySpaced = function() {
   return 0;
 };
 
+
+karelsim.world_LowHurdles_AllBlocks = function() {
+  "use strict";
+  clearWorld(10, 4);
+  wall(1.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(2.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(3.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(4.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(5.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(6.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(7.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  wall(8.5, 1, karelsim.TOP+karelsim.BOTTOM);
+  karel(1, 1, 'east');
+  beeper(10, 1);
+  return 0;
+};
+
+
+
 karelsim.world_DifferentlySpaced = function() {
   "use strict";
   clearWorld(10, 4);
