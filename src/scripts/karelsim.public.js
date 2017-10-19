@@ -163,7 +163,7 @@ function turnLeft() {
     "use strict";
 	if ( karelsim.karelStatus === 'on' ) {
     	karelsim.setKarelDirection(karelsim.LEFTTURN[karelsim.karelDir]);
-	    karelsim.infoMessage('turnLeft()');
+	    karelsim.infoMessage('turnLeft();');
 	} else {
 	    karelsim.errorMessage('Karel cannot turn left when it is turned off.');
 		karelsim.errorTurnOff();

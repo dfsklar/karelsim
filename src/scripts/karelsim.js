@@ -302,6 +302,7 @@ karelsim.setKarel = function(status, wx, wy, dir) {
 
 // errorTurnOff -- Turns Karel off in response to an error condition
 karelsim.errorTurnOff = function() {
+	karelsim.unlock();
 	karelsim.setKarelStatus('off');
 	karelsim.errorMessage('Karel is turning itself off :-(');	
 	WORLDSIM.worldController.world.karel.turnOff();  // UI

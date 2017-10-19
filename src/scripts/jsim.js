@@ -262,10 +262,7 @@ jsim.getCurrentLineNumber = function() {
 		// produces this case.
 		// Previous version of this function (Mike's era) just assumed 1, but that is
 		// a problem.  I'm letting this throw an exception instead.
-		if (currentStep === null)
-			return 1;
-		else
-			return currentStep.line;
+		return currentStep.line;
 	/*
 	} catch ( ex ) {
 	    jsim.logInternal(jsim.LOG_INTERNAL_ERROR,
@@ -587,7 +584,11 @@ jsim.performStep = function() {
 		// Protect against an internal error where our step name is invalid
 		if ( oStep === null ) {
 		    jsim.logInternal(jsim.LOG_INTERNAL_ERRROR,
-			                 "step: ERROR: Invalid step name '" + sStepName + "'.");
+							 "step: ERROR: Invalid step name '" + sStepName + "'.");
+			this.fcnErrorMessage("Karel sees a problem with your code.", "cantunderstand");
+		    if ( jsim.fcnEndOfExecution !== null ) {
+				jsim.fcnEndOfExecution();
+			 }
 			// Protect against infinite loops
 			jsim.setCurrentStepName("__END__"); // Force end of program
 			return;
