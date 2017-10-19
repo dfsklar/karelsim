@@ -2,7 +2,7 @@
 // LIMITATIONS: Only works for the city called
 // "Low Hurdles Regularly Spaced".
 
-// JUST BEFORE USING THIS:
+// JUST BEFORE USING "jumpOverHurdle":
 // Make sure Karel is facing East
 // and is directly in front of the hurdle.
 // JUST AFTER IT RUNS:
