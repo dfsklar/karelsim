@@ -37,6 +37,7 @@ node_modules/
 jspm_packages/
 
 dist/
+serve_from_here/
 
 # Typescript v1 declaration files
 typings/
