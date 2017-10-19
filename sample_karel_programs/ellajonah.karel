@@ -2,12 +2,6 @@
 // LIMITATION: Only works for the city called
 // "Low Hurdles Regularly Spaced".
 
-function turnLeft() {
-	turnRight();
-	turnRight();
-	turnRight();
-}
-
 // JUST BEFORE USING "jumpOverHurdle":
 // Make sure Karel is facing East
 // and is one block away from the hurdle.

@@ -157,19 +157,19 @@ function move() {
 	}
 }
 
-/*
+
 // turnLeft -- Turn Karel 90 degrees counterclockwise
 function turnLeft() {
     "use strict";
 	if ( karelsim.karelStatus === 'on' ) {
     	karelsim.setKarelDirection(karelsim.LEFTTURN[karelsim.karelDir]);
-	    karelsim.infoMessage('Karel performed: turnLeft()');
+	    karelsim.infoMessage('turnLeft()');
 	} else {
-	    karelsim.errorMessage('Karel cannot turn left when he is off.');
+	    karelsim.errorMessage('Karel cannot turn left when it is turned off.');
 		karelsim.errorTurnOff();
 	}
 }
-*/
+
 
 // turnRight -- Turn Karel 90 degrees clockwise
 function turnRight() {
@@ -193,7 +193,7 @@ function pickBeeper() {
 	    karelsim.errorMessage('Karel cannot pick up a beeper when it is turned off.');
 		karelsim.errorTurnOff();
 	} else if ( isNotNextToABeeper() ) {
-	    karelsim.errorMessage('This intersection has NO beeper..');
+	    karelsim.errorMessage('This intersection has NO beeper.');
 	    karelsim.errorTurnOff();
 	} else {
 	    karelsim.removeBeeper(karelsim.karelwx, karelsim.karelwy);
@@ -313,7 +313,7 @@ window.getNumBeepersInBackpack = getNumBeepersInBackpack;
 window.getWorldWidth = getWorldWidth;
 window.getWorldHeight = getWorldHeight;
 window.move = move;
-// window.turnLeft = turnLeft;
+window.turnLeft = turnLeft;
 window.turnRight = turnRight;
 window.pickBeeper = pickBeeper;
 window.putBeeper = putBeeper;
