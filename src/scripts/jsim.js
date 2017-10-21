@@ -36,7 +36,9 @@ var jsim = {
 	exprStack:         null,  // Used to track call/return values (for user-defined funcs)
 	stepsHash:         null,  // "Hash" of individual steps that will be simulated
 	isPaused:          false, // Is execution paused?
-	stepDelay:         600,   // Controls speed of step playback, in ms
+
+	// Default step delay
+	stepDelay:         400,   // Controls speed of step playback, in ms
 	
 	tsLastGrammar:     (new Date()).getTime()-0,  // Timestamp when setGrammar was last used
 	tsLastSource:      (new Date()).getTime()-1,  // Timestamp when setProgramSource was last used

@@ -116,7 +116,7 @@
             <textarea id="pgm" class="lined" cols=46 rows=25 wrap="soft"	>// Put your team's names here.
 
 function moveIfSafe() {
-	if (isFrontClear()) {
+	if ( isFrontClear() ) {
 		move();
 	}
 }
@@ -170,9 +170,10 @@ function main() {
               Select the city you'd like Karel to live in:
               <select id="worldName">
 								<option value='world_RegularlySpaced'>Low Hurdles Regularly Spaced</option>
-								<option value='world_LowHurdles_AllBlocks'>Low Hurdles at EVERY block</option>
+								<option value='world_LowHurdles_AllBlocks'>Low Hurdles together at start</option>
 								<option value='world_DifferentlySpaced'>Low Hurdles Differently Spaced</option>
-								<option value='world_TwelveByFourWithRandomLowHurdles'>Low Hurdles Randomly Space</option>
+								<option value='world_DifferentlySpaced_3'>Low Hurdles (3 of them)</option>
+								<option value='world_DifferentlySpaced_shorter'>Low Hurdles, shorter course</option>
 								<option value='world_TwelveByFourWithHurdles2'>Hurdles of Different Heights</option>
 								<option value='world_TwelveByFourWithRandomHurdles'>Hurdles RANDOM!</option>
 								<option value='world_empty7x7'>Empty 7x7</option>
@@ -281,10 +282,9 @@ function main() {
 				</div> <!-- rightcontent -->
 				
 				<div class='lesson-notes'>
-					<b>Lesson Notes!</b>  
-					<br/>You can review this lesson, including the "exercises"<br/>and their solutions, anytime!
+					<b>Lesson Notes and Exercises!</b>  
 					<br/>  
-					<a target='_karel_lesson_notes' href='https://docs.google.com/document/d/1r8LdRr0sxXIejX3bpRW6oPpRNwuknQNo5whle_I6GLU/edit?usp=sharing'>Just click here!</a>
+					<a target='_karel_lesson_notes' href='https://docs.google.com/document/d/1Snli24leNqrsgrE37YG4nJuqCIYZAJNZQBzER9Z8Voo/edit?usp=sharing'>Just click here!</a>
         </div>
 		
     </div> <!-- middlecontent -->
