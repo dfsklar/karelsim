@@ -1,0 +1,47 @@
+// By: MILO AND LAMTEN
+
+// LIMITATIONS: Works for any city where the beeper
+// is on the 10th avenue (counting from left to right).
+
+// JUST BEFORE USING "jumpOverHurdle":
+// Make sure Karel is facing East
+// and is directly in front of the hurdle.
+// JUST AFTER IT RUNS:
+// Karel will be facing East with the hurdle
+// just behind it.
+function jumpOverHurdle() {
+  turnLeft();
+  move();
+  turnRight();
+  move();
+  turnRight();
+  move();
+  turnLeft();
+}
+
+
+// Jump if necessary. Otherwise: move
+function smartJump() {
+  if ( isFrontBlocked() ) {
+     jumpOverHurdle();
+  }
+  else {
+     move();
+  }
+}
+
+
+// Your program STARTS here!
+function main() {
+  smartJump();
+  smartJump();
+  smartJump();
+  smartJump();
+  smartJump();
+  smartJump();
+  smartJump();
+  smartJump();
+  smartJump();
+
+  pickBeeper();
+}
