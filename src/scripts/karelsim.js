@@ -1244,6 +1244,7 @@ karelsim.checkSyntax = function(bQuietOnSuccess) {
 	        karelsim.infoMessage("Program source code has valid syntax.");
 		}
 		karelsim.lastPassedSyntaxCheck = karelsim.now();
+		window.storeProgram(programSource);
 		return 0;
 	} catch ( ex ) {
 		// DFSKLARD: this is where things go if the SYNTAX check fails.  But this 
