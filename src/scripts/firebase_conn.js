@@ -45,7 +45,7 @@ window.STARTUP_VIA_RAVEN = function() {
             m = xcheckTime(m);
             h = xcheckTime(h);
             s = xcheckTime(s);
-            return h + "_" + m + "_" + s;
+            return String(1900+today.getYear()) + String(today.getMonth()+1) + String(today.getDate()) + "_" + h + "_" + m + "_" + s;
         }
 
 	      
@@ -56,9 +56,8 @@ window.STARTUP_VIA_RAVEN = function() {
 
             $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
 	              window.ipaddress = data['ip'];
-	              window.karel_session_name = window.ipaddress + "__" + produceTimeHumanFriendly();
+                  window.karel_session_name = produceTimeHumanFriendly() + "__" + window.ipaddress;
 	              window.karel_storage_index = 0;
-	              // alert(window.karel_session_name);
 	              try {
 		                window.storageRef.child(window.karel_session_name+'/start.sentinel').putString('hello').then(function(snapshot) {
 			                  ;  //nothing to do here
