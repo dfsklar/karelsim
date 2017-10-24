@@ -4,7 +4,7 @@
 	paths: {
 	"jquery-ui":                  "libs/jquery-ui-1.7.2.custom.min",
 	    "bootstrap":                  "libs/bootstrap.min",
-	    "codemiror":                  "libs/codemirror",
+	    "codemirror":                  "libs/codemirror",
 	    "plugins":                    "libs/plugins",
 	    "css3-mediaqueries":          "libs/css3-mediaqueries",
 	    "Ember":                      "libs/ember-0.9.7.1.min",

@@ -965,7 +965,7 @@ karelsim.prettifyProgramTextArea = function() {
 	"use strict";
 	
 	// Make 'pgm' textarea into a nicer, numbered, lined text area
-	karelsim.codemirror = CodeMirror.fromTextArea($("#pgm")[0], {
+	karelsim.codemirror = window.CodeMirror.fromTextArea($("#pgm")[0], {
 		mode: 'javascript',
 		gutters: ["CodeMirror-linenumbers", 'breakpoints'],
 		lineNumbers: true });

@@ -1,3 +1,5 @@
+// This should be the only script loaded by the HTML directly.
+
 require.config({
     baseUrl: "scripts",
     paths: {
@@ -5,25 +7,33 @@ require.config({
         "bootstrap":                  "libs/bootstrap.min",
         "plugins":                    "libs/plugins",
         "css3-mediaqueries":          "libs/css3-mediaqueries",
-		"Ember":                      "libs/ember-0.9.7.1.min",
-		"peg":                        "libs/peg/peg-0.7.0",
-		"linedtextarea":              "../jquery-linedtextarea/jquery-linedtextarea"
+		    "Ember":                      "libs/ember-0.9.7.1.min",
+		    "peg":                        "libs/peg/peg-0.7.0",
+		    "linedtextarea":              "../jquery-linedtextarea/jquery-linedtextarea",
+		    "codemirror":                 "libs/codemirror"
     },
     waitSeconds: 15
 });
 
+
+// ORDER IMPORTANT: must be echoed in the function decl directly below this!
 require(
     [
-      "jquery-ui"
-    , "bootstrap"
-    , "plugins"
-    , "css3-mediaqueries"
+        "jquery-ui"
+        , "bootstrap"
+        , "plugins"
+	      , "css3-mediaqueries"
 	
-    , "EmberModule"
+	      , "codemirror"
+	      , "https://www.gstatic.com/firebasejs/4.6.0/firebase.js"
+        , "https://cdn.ravenjs.com/3.19.1/raven.min.js"
 	
-	, "peg"
-	, "linedtextarea"
+        , "EmberModule"
 	
+	      , "peg"
+	      , "linedtextarea"
+	
+    , "firebase_conn"
 	, "jsim"
 	, "jsim.functiontable"
 	, "jsim.callstack"
@@ -41,15 +51,20 @@ require(
 	, "karelsim.worlds"
     ],
 
-    function (jqui, b, p, mq, Em, peg, lined, jsim,
-              jsimfunctiontable, jsimcallstack, jsimstepshash, jsimvar, 
-			  jsimparse, jsimpostparse, jsimcodegen,
-			  WORLDSIM, worldsimkarelsim, 
-			  karelsim, karelsimevents, karelsimimpexp,
-			  karelsimpublic, karelsimworlds) {
-	    "use strict";
-		WORLDSIM.worldController.initExplicit();
-        karelsim.init();
-    }
+	function (jqui, b, p, mq, codemirror, firebase_undefined, raven,
+			      Em, peg, lined, firebase_conn, jsim,
+            jsimfunctiontable, jsimcallstack, jsimstepshash, jsimvar, 
+			      jsimparse, jsimpostparse, jsimcodegen,
+			      WORLDSIM, worldsimkarelsim, 
+			      karelsim, karelsimevents, karelsimimpexp,
+			      karelsimpublic, karelsimworlds) {
+		  "use strict";
+		  window.CodeMirror = (codemirror);
+		  window.firebase = firebase;
+		  window.raven = raven;
+		  WORLDSIM.worldController.initExplicit();
+		  window.STARTUP_VIA_RAVEN();
+      	  karelsim.init();
+  }
 );
 
