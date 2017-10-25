@@ -5,6 +5,12 @@ window.STARTUP_VIA_RAVEN = function() {
 
     window.raven.context(function () {
 
+        // Restore author info from session storage
+        var authorname = sessionStorage.getItem('authorname');
+        if (authorname) {
+            $('#authorname').val(authorname).addClass('populated');
+        }
+        
         // Initialize Firebase
         var config = {
             apiKey: "AIzaSyDTkHkrTUcgA7rscGXM72YHRxcidMA4rJw",

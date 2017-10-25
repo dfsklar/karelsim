@@ -150,6 +150,14 @@ li {
   background-color:#fff;
 }
 
+#authorname {
+  background-color: orange;
+}
+#authorname.populated {
+  background-color: white;
+}
+
+
 #status,
 #location,
 #direction,
