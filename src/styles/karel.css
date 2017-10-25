@@ -163,7 +163,6 @@ li {
 }
 
 #manual_actions_heading,
-#program_heading,
 #immediate_heading,
 #info_block_heading,
 #log_block_heading {
@@ -171,6 +170,16 @@ li {
   margin-bottom:0px;
   font-weight:bold;
 }
+
+#program_heading{
+  float: left;
+  margin-top:0px;
+  margin-bottom:0px;
+  font-weight:bold;  
+}
+
+
+
 
 #run_program_link,
 #run_immediate_link,

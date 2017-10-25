@@ -538,7 +538,17 @@ karelsim.resetProgram = function() {
     "use strict";
 	var syntaxCheckResult;
 
-    $("#syntaxerror").hide(); // Hide any previous syntax error
+	$("#syntaxerror").hide(); // Hide any previous syntax error
+	
+	// Make sure the user is "logged-in" - has provided author name(s)
+	var authorname = $('#authorname').val().trim().replace('/', '-');
+	if (authorname == '') {
+		alert("Please enter your first name(s) so your instructor can give guidance and help!");
+		return false;
+	} else {
+		window.authorname = authorname;
+	}
+
     syntaxCheckResult = karelsim.checkSyntax(/*bQuietOnSuccess=*/true);
 	if ( syntaxCheckResult !== 0 ) {
 	    // Syntax check already gave message(s) about issues... just return here

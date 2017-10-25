@@ -18,6 +18,7 @@ window.STARTUP_VIA_RAVEN = function() {
         window.mostRecentProgram = '';
         window.storeProgram = function(str) {
             if (str === window.mostRecentProgram) return;
+            window.karel_session_name = window.login_time + "__" + window.authorname + '__' + window.ipaddress;            
             try {
 	              window.storageRef.child(window.karel_session_name+'/'+(++window.karel_storage_index)+'.txt')
 	                  .putString(str).then(function(snapshot) {
@@ -55,14 +56,9 @@ window.STARTUP_VIA_RAVEN = function() {
             window.storageRef = firebase.storage().ref();
 
             $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
-	              window.ipaddress = data['ip'];
-                  window.karel_session_name = produceTimeHumanFriendly() + "__" + window.ipaddress;
+                  window.ipaddress = data['ip'];
+                  window.login_time = produceTimeHumanFriendly();
 	              window.karel_storage_index = 0;
-	              try {
-		                window.storageRef.child(window.karel_session_name+'/start.sentinel').putString('hello').then(function(snapshot) {
-			                  ;  //nothing to do here
-		                });
-	              } catch(ex) {}
 	          });
         } catch(ex){}
 
