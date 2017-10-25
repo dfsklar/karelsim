@@ -28,7 +28,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 a {
@@ -56,6 +56,23 @@ ol {
 li {
   margin-bottom:10px;
 }
+
+#topload {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color:  rgba(241, 209, 209, 0.8);
+}
+
+#topload .middle {
+  font-size: 36px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 25%;
+}
+
 
 #topcontent {
   margin:0px;

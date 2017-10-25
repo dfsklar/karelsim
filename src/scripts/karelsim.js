@@ -1028,6 +1028,8 @@ karelsim.init = function() {
 
 	karelsim.hideUIElements();
 	karelsim.addEventListeners();
+
+	$('#topload').addClass('hidden');
 };
 
 // ----- LOADING KAREL PROGRAM FROM SERVER-SIDE REPO 
