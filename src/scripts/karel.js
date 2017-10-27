@@ -33,24 +33,25 @@ require(
 	      , "peg"
 	      , "linedtextarea"
 	
-    , "firebase_conn"
-	, "jsim"
-	, "jsim.functiontable"
-	, "jsim.callstack"
-	, "jsim.stepshash"
-	, "jsim.var"
-	, "jsim.parse"
-	, "jsim.postparse"
-	, "jsim.codegen"
-	, "worldsim"
-	, "worldsim.karelsim"
-	, "karelsim"
-	, "karelsim.events"
-	, "karelsim.impexp"
-	, "karelsim.public"
-	, "karelsim.worlds"
-    ],
+        , "firebase_conn"
 
+	      , "jsim"
+	      , "jsim.functiontable"
+	      , "jsim.callstack"
+	      , "jsim.stepshash"
+	      , "jsim.var"
+	      , "jsim.parse"
+	      , "jsim.postparse"
+	      , "jsim.codegen"
+	      , "worldsim"
+	      , "worldsim.karelsim"
+	      , "karelsim"
+	      , "karelsim.events"
+	      , "karelsim.impexp"
+	      , "karelsim.public"
+	      , "karelsim.worlds"
+    ],
+    
 	function (jqui, b, p, mq, codemirror, firebase_undefined, raven,
 			      Em, peg, lined, firebase_conn, jsim,
             jsimfunctiontable, jsimcallstack, jsimstepshash, jsimvar, 
