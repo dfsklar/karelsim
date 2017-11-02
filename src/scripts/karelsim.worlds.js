@@ -312,6 +312,69 @@ karelsim.world_LowHurdles_AllBlocks = function() {
 };
 
 
+karelsim.make_vert_wall = function(x, yLO, yHI) {
+  while (yLO <= yHI) {
+    wall(x, yLO, karelsim.TOP+karelsim.BOTTOM);
+    yLO += 0.5;
+  }
+}
+karelsim.make_horiz_wall = function(y, xLO, xHI) {
+  while (xLO <= xHI) {
+    wall(xLO, y, karelsim.LEFT+karelsim.RIGHT);
+    xLO += 0.5;
+  }
+}
+
+
+
+
+
+function random_direction() {
+  if (Math.random() > 0.5) {
+    return (Math.random() > 0.5) ? 'north' : 'east';
+  } else {
+    return (Math.random() > 0.5) ? 'west' : 'south';    
+  }
+}
+
+karelsim.escape_room_1 = function() {
+  "use strict";
+  clearWorld(6, 6);
+  karelsim.make_vert_wall(2.5, 2.5, 5.5);
+  karelsim.make_vert_wall(5.5, 2.5, 5.5);
+  karelsim.make_horiz_wall(2.5, 2.5, 5.5);
+  karelsim.make_horiz_wall(5.5, 2.5, 5.5);
+
+  // Make the door in a random place.
+  // which side: left or right?
+  var xDoor = (Math.random() > 0.5) ? 2.5 : 5.5;
+  var yDoor = 3 + Math.floor(Math.random() * 2);
+  wall(xDoor, yDoor, 0);
+  
+  karel(3, 4, random_direction());
+
+  return 0;
+};
+
+karelsim.escape_room_2 = function() {
+  "use strict";
+  clearWorld(8, 6);
+  karelsim.make_vert_wall(2.5, 2.5, 5.5);
+  karelsim.make_vert_wall(6.5, 2.5, 5.5);
+  karelsim.make_horiz_wall(2.5, 2.5, 6.5);
+  karelsim.make_horiz_wall(5.5, 2.5, 6.5);
+
+  // Make the door in a random place.
+  // which side: top or bottom?
+  var yDoor = (Math.random() > 0.5) ? 2.5 : 5.5;
+  var xDoor = 3 + Math.floor(Math.random() * 3);
+  wall(xDoor, yDoor, 0);
+  
+  karel(5, 3, random_direction());
+
+  return 0;
+};
+
 
 karelsim.world_DifferentlySpaced = function() {
   "use strict";

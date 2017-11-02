@@ -22,6 +22,10 @@ window.STARTUP_VIA_RAVEN = function() {
         };
 	
         window.mostRecentProgram = '';
+
+        // Here we store a program by manufacturing a new fullpathname.
+        // After storage is performed into Firebase STORAGE, a record of
+        // this is made in Firebase DATABASE.
         window.storeProgram = function(str) {
             if (str === window.mostRecentProgram) return;
             window.karel_session_name = window.login_time + "__" + window.authorname + '__' + window.ipaddress;            
@@ -58,9 +62,14 @@ window.STARTUP_VIA_RAVEN = function() {
 	      
         try {
             firebase.initializeApp(config);
+            window.firebaseApp = firebase.app();
             var auth = firebase.auth();
             window.storageRef = firebase.storage().ref();
 
+            window.firebaseDB = firebase.database();
+            window.firebaseDB_codesnaps = window.firebaseDB.ref("/code-snaps");
+
+            // Obtain the IP address
             $.getJSON('//freegeoip.net/json/?callback=?', function(data) {
                   window.ipaddress = data['ip'];
                   window.login_time = produceTimeHumanFriendly();
