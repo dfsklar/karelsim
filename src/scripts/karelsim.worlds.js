@@ -347,15 +347,18 @@ karelsim.escape_room_1 = function() {
 
   // Make the door in a random place.
   // which side: left or right?
-  var xDoor = (Math.random() > 0.5) ? 2.5 : 5.5;
   var yDoor = 3 + Math.floor(Math.random() * 2);
+  var side = (Math.random() > 0.5) ? 'L' : 'R';
+  var xDoor = (side == 'L') ? 2.5 : 5.5;
   wall(xDoor, yDoor, 0);
-  
+  beeper( (side=='L') ? xDoor-0.5 : xDoor+0.5, yDoor);
+
   karel(4, 4, random_direction());
 
   return 0;
 };
 
+    
 karelsim.escape_room_2 = function() {
   "use strict";
   clearWorld(8, 6);
@@ -366,11 +369,34 @@ karelsim.escape_room_2 = function() {
 
   // Make the door in a random place.
   // which side: top or bottom?
-  var yDoor = (Math.random() > 0.5) ? 2.5 : 5.5;
+  var side = (Math.random() > 0.5) ? 'B' : 'T';
+  var yDoor = (side == 'B') ? 2.5 : 5.5;
   var xDoor = 3 + Math.floor(Math.random() * 3);
   wall(xDoor, yDoor, 0);
+  beeper( xDoor,  (side=='B') ? yDoor-0.5 : yDoor+0.5);
   
   karel(5, 4, random_direction());
+
+  return 0;
+};
+
+    
+    
+karelsim.escape_room_3 = function() {
+  "use strict";
+  clearWorld(8, 6);
+  karelsim.make_vert_wall(2.5, 2.5, 5.5);
+  karelsim.make_vert_wall(6.5, 2.5, 5.5);
+  karelsim.make_horiz_wall(2.5, 2.5, 6.5);
+  karelsim.make_horiz_wall(5.5, 2.5, 6.5);
+
+  // Put the door in a particular place.
+  var xDoor = 5;
+  var yDoor = 5.5;
+  wall(xDoor, yDoor, 0);
+  beeper( xDoor,  yDoor+0.5 );
+  
+  karel(5, 4, 'north');
 
   return 0;
 };

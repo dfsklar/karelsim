@@ -52,11 +52,8 @@ function main()
     turnLeft();
   }
   
-  // So karel has now found the door.
+  // So Karel has now found the door.
   // But Karel has NOT exited the door.
   // Can you help Karel finish the job by adding 
   // some more instructions to this MAIN function?
-  // Please tell Karel to put down a beeper just
-  // outside the door; Karel does have one beeper
-  // in its backpack!
 }
