@@ -1,0 +1,42 @@
+// JUST BEFORE USING "jumpOverHurdle":
+// Make sure Karel is facing East
+// and is directly in front of the hurdle.
+// JUST AFTER IT RUNS:
+// Karel will be facing East with the hurdle
+// just behind it.
+// LIMITATIONS: Can only jump over hurdles that
+// are one block high!
+function jumpOverHurdle()
+{
+  turnLeft();
+  move();
+  turnRight();
+  move();
+  turnRight();
+  move();
+  turnLeft();
+}
+
+
+function continueOneBlock()
+{
+  if ( WHAT_SENSOR_FUNCTION_GOES_HERE() )
+  {
+    move();
+  }
+  else
+  {
+    jumpOverHurdle();
+  }
+}
+
+
+// Your program STARTS here!
+function main()
+{
+  while ( WHAT_SENSOR_FUNCTION_GOES_HERE() )
+  {
+    continueOneBlock();
+  }
+  pickBeeper();
+}

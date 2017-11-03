@@ -351,7 +351,7 @@ karelsim.escape_room_1 = function() {
   var yDoor = 3 + Math.floor(Math.random() * 2);
   wall(xDoor, yDoor, 0);
   
-  karel(3, 4, random_direction());
+  karel(4, 4, random_direction());
 
   return 0;
 };
@@ -370,7 +370,7 @@ karelsim.escape_room_2 = function() {
   var xDoor = 3 + Math.floor(Math.random() * 3);
   wall(xDoor, yDoor, 0);
   
-  karel(5, 3, random_direction());
+  karel(5, 4, random_direction());
 
   return 0;
 };

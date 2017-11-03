@@ -1,0 +1,62 @@
+// Use this program to teach Karel how to escape
+// from any rectangular room with at least one door!
+
+
+function walkForwardToWall()
+{
+  while ( isFrontClear() )
+  {
+    move();
+  }
+}
+
+
+function walkAlongWallOnRightSide()
+{
+  // Do you see the "&&" in the while expression?
+  // It means "AND".
+  // So we want Karel to keep walking forward 
+  // as long as its front is still clear AND
+  // its right side is blocked.
+  // In English, you would say this:
+  // "Karel, please walk forward to the next
+  //  wall ahead of you, EXCEPT please stop if
+  //  you notice an opening on your right side."
+  while ( isFrontClear() && isRightBlocked() )
+  {
+    move();
+  }
+}
+
+
+// Your program STARTS here!
+function main()
+{
+  // At the very beginning, Karel may be in the
+  // middle of a room, not at a wall.
+  // So first we need to ask Karel to walk forward
+  // until it hits a wall.
+  walkForwardToWall();
+  
+  // So now Karel is facing a wall.
+  // Let's have Karel turn left so that wall will
+  // be on its right side.
+  turnLeft();
+  
+  // OK!  So now, all we need to do is tell
+  // Karel to keep trying each of the four walls
+  // as long as it hasn't yet found the door.
+  while ( isRightBlocked() )
+  {
+    walkAlongWallOnRightSide();
+    turnLeft();
+  }
+  
+  // So karel has now found the door.
+  // But Karel has NOT exited the door.
+  // Can you help Karel finish the job by adding 
+  // some more instructions to this MAIN function?
+  // Please tell Karel to put down a beeper just
+  // outside the door; Karel does have one beeper
+  // in its backpack!
+}
