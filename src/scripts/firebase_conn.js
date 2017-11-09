@@ -28,11 +28,14 @@ window.STARTUP_VIA_RAVEN = function() {
         // After storage is performed into Firebase STORAGE, a record of
         // this is made in Firebase DATABASE.
         window.storeProgram = function(str, descriptionForExplicitSave) {
+
+            var isAutosave = (descriptionForExplicitSave == null);
+
             // If this is an "autosave", then ignore this if the program source code hasn't changed.
-            if (!descriptionForExplicitSave && (str === window.mostRecentProgram)) 
+            if (isAutosave && (str === window.mostRecentProgram)) 
                 return;
 
-            if (!descriptionForExplicitSave) {
+            if (isAutosave) {
                 descriptionForExplicitSave = "(autosave)";
             }
 
@@ -52,7 +55,7 @@ window.STARTUP_VIA_RAVEN = function() {
                         description: descriptionForExplicitSave
                     }
                 );
-                if (descriptionForExplicitSave != "(autosave")
+                if (!isAutosave)
                     alert("Your program was SAVED along with the description you provided.")
             } catch(ex) {
                   console.log('Attempt to store program in firebase failed.');
