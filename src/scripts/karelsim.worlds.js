@@ -12,6 +12,38 @@ function(karelsim) {
 
 
 
+
+  karelsim.world_empty_w05_h03 = function() {
+    "use strict";
+    clearWorld(5, 3);
+    setNumBeepersInKarelsBag(100);
+
+    karel(1, 1, 'north');
+    return 0;
+  };
+
+  karelsim.world_empty_w07_h04 = function() {
+    "use strict";
+    clearWorld(7, 4);
+    setNumBeepersInKarelsBag(100);
+
+    karel(1, 1, 'north');
+    return 0;
+  };
+
+  karelsim.world_empty_w09_h05 = function() {
+    "use strict";
+    clearWorld(9, 5);
+    setNumBeepersInKarelsBag(100);
+
+    karel(1, 1, 'north');
+    return 0;
+  };
+    
+  
+
+
+
 karelsim.world_BackAndForth1 = function() {
   "use strict";
   clearWorld(4, 3);
