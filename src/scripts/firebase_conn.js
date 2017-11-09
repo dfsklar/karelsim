@@ -40,11 +40,12 @@ window.STARTUP_VIA_RAVEN = function() {
             }
         };
 
-        function xcheckTime(i) {
+        
+        function forceTwoDig(i) {
             if (i < 10) {
-	              i = "0" + i;
+	              i = "0" + String(i);
             }
-            return i;
+            return String(i);
         }
 
         function produceTimeHumanFriendly() {
@@ -53,10 +54,10 @@ window.STARTUP_VIA_RAVEN = function() {
             var m = today.getMinutes();
             var s = today.getSeconds();
             // add a zero in front of numbers<10
-            m = xcheckTime(m);
-            h = xcheckTime(h);
-            s = xcheckTime(s);
-            return String(1900+today.getYear()) + String(today.getMonth()+1) + String(today.getDate()) + "_" + h + "_" + m + "_" + s;
+            m = forceTwoDig(m);
+            h = forceTwoDig(h);
+            s = forceTwoDig(s);
+            return String(1900+today.getYear()) + forceTwoDig(today.getMonth()+1) + forceTwoDig(today.getDate()) + "_" + h + "_" + m + "_" + s;
         }
 
 	      
