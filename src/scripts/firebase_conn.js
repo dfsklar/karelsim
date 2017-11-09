@@ -9,6 +9,7 @@ window.STARTUP_VIA_RAVEN = function() {
         var authorname = sessionStorage.getItem('authorname');
         if (authorname) {
             $('#authorname').val(authorname).addClass('populated');
+            $('.saverui').removeClass('hidden');
         }
         
         // Initialize Firebase
@@ -26,17 +27,35 @@ window.STARTUP_VIA_RAVEN = function() {
         // Here we store a program by manufacturing a new fullpathname.
         // After storage is performed into Firebase STORAGE, a record of
         // this is made in Firebase DATABASE.
-        window.storeProgram = function(str) {
-            if (str === window.mostRecentProgram) return;
-            window.karel_session_name = window.login_time + "__" + window.authorname + '__' + window.ipaddress;            
+        window.storeProgram = function(str, descriptionForExplicitSave) {
+            // If this is an "autosave", then ignore this if the program source code hasn't changed.
+            if (!descriptionForExplicitSave && (str === window.mostRecentProgram)) 
+                return;
+
+            if (!descriptionForExplicitSave) {
+                descriptionForExplicitSave = "(autosave)";
+            }
+
+            window.karel_session_name = window.login_time + "__" + sessionStorage.authorname + '__' + window.ipaddress;            
             try {
-	              window.storageRef.child(window.karel_session_name+'/'+(++window.karel_storage_index)+'.txt')
+                var seqnum = ++window.karel_storage_index;
+                var path = window.karel_session_name + '/' + seqnum;
+	            window.storageRef.child(path)
 	                  .putString(str).then(function(snapshot) {
 		                    window.mostRecentProgram = str;
 		                    // alert('good store');
-		                });
+                        });
+                window.firebaseDB.ref("/code-snaps/" + sessionStorage.authorname + "/" + window.login_time + "/" + seqnum).set(
+                    {
+                        datetime: produceTimeHumanFriendly(),
+                        path: path,
+                        description: descriptionForExplicitSave
+                    }
+                );
+                if (descriptionForExplicitSave != "(autosave")
+                    alert("Your program was SAVED along with the description you provided.")
             } catch(ex) {
-	              console.log('Attempt to store program in firebase failed.');
+                  console.log('Attempt to store program in firebase failed.');
             }
         };
 
@@ -48,6 +67,7 @@ window.STARTUP_VIA_RAVEN = function() {
             return String(i);
         }
 
+        // Produces a human-friendly rendering of the CURRENT TIME 
         function produceTimeHumanFriendly() {
             var today = new Date();
             var h = today.getHours();

@@ -25,6 +25,11 @@ karelsim.addEventListeners = function() {
 			karelsim.loadWorldUsingForm();
 			return false; } },
 
+		{ sel: "#btnExplicitSave"   , evt: "click",  fcn: function() {
+			var programSource = karelsim.codemirror.getValue();
+			window.storeProgram(programSource, $('#save_descr').val().trim());
+		}},
+
 		{ sel: "#btnResetKarel"                   , evt: "click"  , fcn: function() { karel(1,1,"north"); return false; } },
 		{ sel: "#btnTurnOn"                       , evt: "click"  , fcn: function() { turnOn();           return false; } },
 		{ sel: "#btnTurnOff"                      , evt: "click"  , fcn: function() { turnOff();          return false; } },

@@ -541,7 +541,7 @@ karelsim.resetProgram = function() {
 	$("#syntaxerror").hide(); // Hide any previous syntax error
 	
 	// Make sure the user is "logged-in" - has provided author name(s)
-	var authorname = $('#authorname').val().trim().replace('/', '-');
+	var authorname = $('#authorname').val().trim().replace('/', '-').replace('.','_');
 	if (authorname == '') {
 		alert("Please enter your first name(s) in the ORANGE textbox... so your instructor can keep track of your progress!");
 		return false;
@@ -549,6 +549,7 @@ karelsim.resetProgram = function() {
 		window.authorname = authorname;
 		sessionStorage.setItem('authorname', authorname);
 		$('#authorname').addClass('populated');
+		$('.saverui').removeClass('hidden');
 	}
 
     syntaxCheckResult = karelsim.checkSyntax(/*bQuietOnSuccess=*/true);
