@@ -49,8 +49,21 @@ hn.view = function () {
         m('h2', 'Select your personal/team name.'),
         m('div', [
             m('ul', [
-                Object.keys(hn.vm.DATA).map(function (vv) {
-                    return m('p', vv);
+                Object.keys(hn.vm.DATA).map(function (teamname) {
+                    var teamroot = hn.vm.DATA[teamname];
+                    return m('div', [
+                        m('h3', teamname),
+                        Object.keys(teamroot).map(function(sessiondate) {
+                            var session = teamroot[sessiondate];
+                            return [
+                                m('h4', sessiondate),
+                                Object.keys(session).map(function(saveevent) {
+                                    return [
+                                        m('h5', saveevent)
+                                    ];
+                                })
+                            ];
+                        })]);
                 })
             ])
         ])
@@ -58,4 +71,3 @@ hn.view = function () {
 }
 
 m.module(document.getElementById("app"), hn);
-
