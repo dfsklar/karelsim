@@ -44,6 +44,14 @@ hn.controller = function () {
 }
 
 
+// datetime looks like yyyymmdd_hh_mm_ss
+function rendertime(datetime) {
+    var m = datetime.match(/^(\d\d\d\d)(\d\d)(\d\d)_(\d\d)_(\d\d)_(\d\d)$/);
+    return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], 0);
+}
+    
+
+
 hn.view = function () {
     return m("html", [
         m('h2', 'Select your personal/team name.'),
@@ -56,10 +64,11 @@ hn.view = function () {
                         Object.keys(teamroot).map(function(sessiondate) {
                             var session = teamroot[sessiondate];
                             return [
-                                m('h4', sessiondate),
+                                m('h4', 'Session started at: ' + rendertime(sessiondate)),
                                 Object.keys(session).map(function(saveevent) {
                                     return [
-                                        m('h5', saveevent)
+                                        m('h5',
+                                          session[saveevent].description)
                                     ];
                                 })
                             ];
