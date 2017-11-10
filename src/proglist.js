@@ -64,11 +64,15 @@ hn.view = function () {
                         Object.keys(teamroot).map(function(sessiondate) {
                             var session = teamroot[sessiondate];
                             return [
-                                m('h4', 'Session started at: ' + rendertime(sessiondate)),
+                                m('h4', 'Karel Session started at: ' + rendertime(sessiondate)),
                                 Object.keys(session).map(function(saveevent) {
+                                    var descr = session[saveevent].description;
+                                    var isAutosaved = (descr == '(autosave)');
+                                    var label = isAutosaved ?
+                                        '(autosaved)' : 'STUDENT SAVED with this description: ' + descr;
                                     return [
-                                        m('h5',
-                                          session[saveevent].description)
+                                        m('h5.autosave' + String(isAutosaved), label),
+                                        m('a[href=karel.html?fbload='+session[saveevent].path+']', 'LOAD!')
                                     ];
                                 })
                             ];
