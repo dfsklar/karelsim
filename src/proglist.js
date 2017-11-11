@@ -71,8 +71,10 @@ hn.view = function () {
                                     var label = isAutosaved ?
                                         '(autosaved)' : 'STUDENT SAVED with this description: ' + descr;
                                     return [
-                                        m('h5.autosave' + String(isAutosaved), label),
-                                        m('a[href=karel.html?fbload='+session[saveevent].path+']', 'LOAD!')
+                                        m('h5.autosave' + String(isAutosaved), [
+                                            m('span', label),
+                                            m('a[href=karel.html?fbload='+session[saveevent].path+']', 'LOAD!')
+                                        ])
                                     ];
                                 })
                             ];
