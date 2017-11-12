@@ -54,7 +54,6 @@ function rendertime(datetime) {
 
 hn.view = function () {
     return m("html", [
-        m('h2', 'Select your personal/team name.'),
         m('div', [
             m('ul', [
                 Object.keys(hn.vm.DATA).map(function (teamname) {
@@ -64,16 +63,17 @@ hn.view = function () {
                         Object.keys(teamroot).map(function(sessiondate) {
                             var session = teamroot[sessiondate];
                             return [
-                                m('h4', 'Karel Session started at: ' + rendertime(sessiondate)),
+                                m('h4', 'Karel Session started at: ' + rendertime(sessiondate).toLocaleString()),
                                 Object.keys(session).map(function(saveevent) {
                                     var descr = session[saveevent].description;
+                                    var whensaved = rendertime(session[saveevent].datetime);
                                     var isAutosaved = (descr == '(autosave)');
                                     var label = isAutosaved ?
                                         '(autosaved)' : 'STUDENT SAVED with this description: ' + descr;
                                     return [
                                         m('h5.autosave' + String(isAutosaved), [
-                                            m('span', label),
-                                            m('a[href=karel.html?fbload='+session[saveevent].path+']', 'LOAD!')
+                                            m('a[href=karel.html?fbload='+session[saveevent].path+']', 'RELOAD this: '),
+                                            m('span', whensaved.toLocaleTimeString() + ' ' + label)
                                         ])
                                     ];
                                 })
