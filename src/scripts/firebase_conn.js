@@ -24,6 +24,27 @@ window.STARTUP_VIA_RAVEN = function() {
 	
         window.mostRecentProgram = '';
 
+
+        window.loadProgram = function(pathStorage, callback) {
+            storageRef.child(pathStorage).getDownloadURL().then(function(url) {
+                // `url` is the download URL for 'images/stars.jpg'
+              
+                // This can be downloaded directly:
+                var xhr = new XMLHttpRequest();
+                xhr.responseType = 'text';
+                xhr.onload = function(event) {
+                    if (callback) 
+                      callback(xhr.response);
+                };
+                xhr.open('GET', url);
+                xhr.send();
+              }).catch(function(error) {
+                  alert("SORRY - our automatic restoration system is current DOWN.  Sorry...");
+                  callback(null);
+              });
+        }
+
+
         // Here we store a program by manufacturing a new fullpathname.
         // After storage is performed into Firebase STORAGE, a record of
         // this is made in Firebase DATABASE.

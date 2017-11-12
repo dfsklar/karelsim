@@ -1035,14 +1035,18 @@ karelsim.init = function() {
 	karelsim.prettifyProgramTextArea();
 
 	var urlVars = karelsim.getUrlVars();
-	if (urlVars.download)
+	if (urlVars.download) {
 		// Load a particular sample program from URL
 		karelsim.download_karel_program(urlVars.download);
+	}
+	else if (urlVars.fbload) {
+		karelsim.download_firebase_program(urlVars.fbload);
+	} else {
+		$('#topload').addClass('hidden');
+	}
 
 	karelsim.hideUIElements();
 	karelsim.addEventListeners();
-
-	$('#topload').addClass('hidden');
 };
 
 // ----- LOADING KAREL PROGRAM FROM SERVER-SIDE REPO 
@@ -1052,8 +1056,24 @@ karelsim.download_karel_program = function(progname) {
 	$.get(url, null, function(data, textStatus, jqXHR) {
 		// This is the success callback after the response is returned.
 		karelsim.codemirror.setValue(data);
+		$('#topload').addClass('hidden');
 	});
-}
+};
+
+
+karelsim.download_firebase_program = function(path) {
+	window.loadProgram(path, function(data) {
+		if (data) {
+			karelsim.codemirror.setValue(data);			
+		}
+		$('#topload').addClass('hidden');		
+	});
+};
+
+
+
+
+
 
 
 karelsim.loadGrammarList = function() {
