@@ -1040,7 +1040,7 @@ karelsim.init = function() {
 		karelsim.download_karel_program(urlVars.download);
 	}
 	else if (urlVars.fbload) {
-		karelsim.download_firebase_program(urlVars.fbload);
+		karelsim.download_firebase_program(unescape(urlVars.fbload));
 	} else {
 		$('#topload').addClass('hidden');
 	}
