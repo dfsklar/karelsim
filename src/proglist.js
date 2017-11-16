@@ -68,12 +68,15 @@ hn.view = function () {
                                     var descr = session[saveevent].description;
                                     var whensaved = rendertime(session[saveevent].datetime);
                                     var isAutosaved = (descr == '(autosave)');
+                                    if (isAutosaved) 
+                                        descr = "";
                                     var label = isAutosaved ?
-                                        '(autosaved)' : 'STUDENT SAVED with this description: ' + descr;
+                                        '(autosaved)' : 'STUDENT SAVED with this description: ';
                                     return [
                                         m('h5.autosave' + String(isAutosaved), [
                                             m('a[href=karel.html?fbload='+session[saveevent].path+']', 'RELOAD this: '),
-                                            m('span', whensaved.toLocaleTimeString() + ' ' + label)
+                                            m('span', whensaved.toLocaleTimeString() + ' ' + label),
+                                            m('span.savedname', descr)
                                         ])
                                     ];
                                 })

@@ -1027,7 +1027,7 @@ karelsim.init = function() {
 	karelsim.loadCommandList(); 
 
 	// Load a sample world
-	karelsim.callMethodByName(karelsim, "world_empty_w05_h03");
+	karelsim.callMethodByName(karelsim, "world_empty_randomoddsize");
 	
 	// Set default grammar... first/selected grammar in grammars drop down
 	karelsim.grammarChosen();

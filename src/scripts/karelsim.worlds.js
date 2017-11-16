@@ -12,6 +12,43 @@ function(karelsim) {
 
 
 
+  function randomOdd() {
+    var r = 2 + Math.floor(Math.random() * 3);
+    return (r*2)-1;
+  }
+
+
+
+
+  function random_direction() {
+    if (Math.random() > 0.5) {
+      return (Math.random() > 0.5) ? 'north' : 'east';
+    } else {
+      return (Math.random() > 0.5) ? 'west' : 'south';    
+    }
+  }
+
+
+  karelsim.world_empty_randomoddsize = function() {
+    "use strict";
+    clearWorld(randomOdd(), randomOdd());
+    setNumBeepersInKarelsBag(100);
+
+    karel(1, 1, 'north');
+    return 0;
+  };
+
+  karelsim.world_empty_randomoddsize_randomkarel = function() {
+    var width = randomOdd();
+    var height = randomOdd();
+    clearWorld(width, height);
+    setNumBeepersInKarelsBag(100);
+    karel(1+Math.floor(Math.random()*(width-1)),
+          1+Math.floor(Math.random()*(height-1)),
+          random_direction());    
+  };
+
+
 
   karelsim.world_empty_w05_h03 = function() {
     "use strict";
@@ -360,14 +397,6 @@ karelsim.make_horiz_wall = function(y, xLO, xHI) {
 
 
 
-
-function random_direction() {
-  if (Math.random() > 0.5) {
-    return (Math.random() > 0.5) ? 'north' : 'east';
-  } else {
-    return (Math.random() > 0.5) ? 'west' : 'south';    
-  }
-}
 
 karelsim.escape_room_1 = function() {
   "use strict";
