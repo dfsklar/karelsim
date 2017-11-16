@@ -12,6 +12,24 @@ function(karelsim) {
 
 
 
+  function randomOdd() {
+    var r = 2 + Math.floor(Math.random() * 3);
+    return (r*2)-1;
+  }
+
+
+
+  karelsim.world_empty_randomoddsize = function() {
+    "use strict";
+    clearWorld(randomOdd(), randomOdd());
+    setNumBeepersInKarelsBag(100);
+
+    karel(1, 1, 'north');
+    return 0;
+  };
+
+
+
 
   karelsim.world_empty_w05_h03 = function() {
     "use strict";

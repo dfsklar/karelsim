@@ -85,7 +85,7 @@
 			  <div id="program_heading_1">
 				  <div id="program_heading">Section for "programming" Karel:
 						<br/>
-						Your name(s): <input id='authorname' maxlength="14" type=text></input>
+						Your name(s): <input id='authorname' maxlength="30" type=text></input>
 					</div>
 
 				  <div id="run_program_link">
@@ -134,8 +134,9 @@ function main()
 </textarea>
 
 
+<!-- Must be hidden initially!  It is auto revealed when student enters her name -->
 <div class='saverui hidden'>
-	SAVE: <input id="save_descr" type=text maxlength="25" placeholder="Write description here"/>  <a class='button-a' id="btnExplicitSave" href="#">SAVE</a>
+	SAVE: <input id="save_descr" type=text maxlength="40" placeholder="Write description here"/>  <a class='button-a' id="btnExplicitSave" href="#">SAVE</a>
 </div>
 					</form>
 					
@@ -182,9 +183,14 @@ function main()
           <p class='lesson-intro'>&nbsp;</p>
 
           <form id="f_loadworld">
+							<a class='button-a btnResetProgram' id="btnResetProgram" href="#">Re-RANDOMize!</a><br />
 			<span id="load_existing_world">
               Select the city you'd like Karel to live in:
               <select id="worldName">
+
+								<option value='world_empty_randomoddsize'>RANDOM-sized empty city</option>
+								<option value='world_empty_randomoddsize_randomkarel'>RANDOM-sized + RANDOM Karel</option>
+
 									<option value='world_empty_w05_h03'>Empty ready for triangle #1</option>
 									<option value='world_empty_w07_h04'>Empty ready for triangle #2</option>
 									<option value='world_empty_w09_h05'>Empty ready for triangle #3</option>
